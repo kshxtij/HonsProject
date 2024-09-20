@@ -3,8 +3,8 @@ set -e -x
 
 ROOT=$(pwd)
 
-sudo apt update
-sudo apt install -y flex bison clang libelf-dev libssl-dev lld python3-pip cmake
+# sudo apt update
+# sudo apt install -y flex bison clang libelf-dev libssl-dev lld python3-pip cmake
 
 # Check argument 1
 if [ -z "$1" ]; then
@@ -22,7 +22,7 @@ echo "Valid kernel version detected: $1"
 
 echo "Cloning latest commit on branch $1"
 
-git clone --depth 1 --branch $1 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git kernels/linux-$1
+# git clone --depth 1 --branch $1 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git kernels/linux-$1
 KERNEL_LOCATION=kernels/linux-$1
 
 # Check if llvm-project directory exists
@@ -41,22 +41,22 @@ cd $LLVM_LOCATION
 mkdir -p build
 cd build
 
-cmake -DLLVM_TARGET_ARCH="X86" -DLLVM_TARGETS_TO_BUILD="ARM;X86;AArch64" -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=WebAssembly -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;lldb" -G "Unix Makefiles" ../llvm
+# cmake -DLLVM_TARGET_ARCH="X86" -DLLVM_TARGETS_TO_BUILD="ARM;X86;AArch64" -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=WebAssembly -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;lldb" -G "Unix Makefiles" ../llvm
 
-make -j$(nproc)
+# make -j$(nproc)
 
 if [ ! -d "$ROOT/llvm-project/prefix" ]; then
   mkdir $ROOT/llvm-project/prefix
 fi
 
-cmake -DCMAKE_INSTALL_PREFIX=$ROOT/llvm-project/prefix -P cmake_install.cmake
+# cmake -DCMAKE_INSTALL_PREFIX=$ROOT/llvm-project/prefix -P cmake_install.cmake
 
 echo "LLVM built and installed"
 
 echo "Building Bitcode Dumping Tool"
 cd $ROOT/IRDumper
-make clean
-make
+# make clean
+# make
 
 DUMPER_LOCATION=$ROOT/IRDumper/build
 IRDUMPER=$DUMPER_LOCATION/lib/libDumper.so
@@ -80,7 +80,7 @@ CONFIG_NAME=$2
 echo "Valid config name detected: $2"
 
 NEW_CMD="\n\n\
-KBUILD_USERCFLAGS += -Wno-error -g -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang $IRDUMPER\nKBUILD_CFLAGS += -Wno-error -g -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang $IRDUMPER"
+KBUILD_USERCFLAGS += -Wno-everything -Wno-address-of-packed-member -g -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang $IRDUMPER\nKBUILD_CFLAGS += -Wno-everything -g -Wno-address-of-packed-member -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang $IRDUMPER"
 
 if [ ! -f "$KERNEL_LOCATION/Makefile.bak" ]; then
 	cp $KERNEL_LOCATION/Makefile $KERNEL_LOCATION/Makefile.bak
@@ -96,7 +96,7 @@ echo "Clearing old build"
 make clean
 
 make $CONFIG_NAME
-echo "1" | make CC=$CLANG_BIN -j$(nproc) -k -i
+echo "1" | make CC=$CLANG_BIN CFLAGS_KERNEL="-Wno-everything" -j$(nproc) -k -i
 
 echo "Kernel built with IR Dumper"
 
