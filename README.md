@@ -1,4 +1,4 @@
-### Linux Kernel Static Analyser
+# Linux Kernel Static Analyser
 
 ## Usage
 
