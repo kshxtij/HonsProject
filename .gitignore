@@ -1,4 +1,4 @@
 kernels/linux-**
 llvm-project
-bitcode/**.zip
+bitcode
 install.log

@@ -1,0 +1,2737 @@
+++ pwd
++ ROOT=/users/kshxtij/HonsProject
++ sudo apt update
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://repos.emulab.net/emulab/ubuntu jammy InRelease
+Hit:2 http://repos.emulab.net/grub-backports/ubuntu jammy InRelease
+Hit:3 http://us.archive.ubuntu.com/ubuntu jammy InRelease
+Get:4 http://us.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Hit:5 http://us.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Get:6 http://us.archive.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:7 http://us.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2,062 kB]
+Get:8 http://us.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,125 kB]
+Fetched 3,444 kB in 2s (2,227 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+66 packages can be upgraded. Run 'apt list --upgradable' to see them.
++ sudo apt install -y flex bison clang libelf-dev libssl-dev lld python3-pip cmake
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+bison is already the newest version (2:3.8.2+dfsg-1build1).
+flex is already the newest version (2.6.4-8build2).
+libelf-dev is already the newest version (0.186-1build1).
+clang is already the newest version (1:14.0-55~exp2).
+lld is already the newest version (1:14.0-55~exp2).
+cmake is already the newest version (3.22.1-1ubuntu1.22.04.2).
+libssl-dev is already the newest version (3.0.2-0ubuntu1.18).
+python3-pip is already the newest version (22.0.2+dfsg-1ubuntu0.4).
+0 upgraded, 0 newly installed, 0 to remove and 66 not upgraded.
++ '[' -z v6.11 ']'
++ echo v6.11
++ grep -qP 'v\d+\.\d+'
++ echo 'Valid kernel version detected: v6.11'
+Valid kernel version detected: v6.11
++ echo 'Cloning latest commit on branch v6.11'
+Cloning latest commit on branch v6.11
++ KERNEL_LOCATION=kernels/linux-v6.11
++ '[' '!' -d /users/kshxtij/HonsProject/llvm-project ']'
++ LLVM_LOCATION=llvm-project
++ echo 'Building LLVM'
+Building LLVM
++ cd llvm-project
++ mkdir -p build
++ cd build
++ '[' '!' -d /users/kshxtij/HonsProject/llvm-project/prefix ']'
++ echo 'LLVM built and installed'
+LLVM built and installed
++ echo 'Building Bitcode Dumping Tool'
+Building Bitcode Dumping Tool
++ cd /users/kshxtij/HonsProject/IRDumper
++ DUMPER_LOCATION=/users/kshxtij/HonsProject/IRDumper/build
++ IRDUMPER=/users/kshxtij/HonsProject/IRDumper/build/lib/libDumper.so
++ cd /users/kshxtij/HonsProject
++ CLANG_BIN=/users/kshxtij/HonsProject/llvm-project/prefix/bin/clang
++ '[' -z allyesconfig ']'
++ '[' allyesconfig '!=' defconfig ']'
++ '[' allyesconfig '!=' allyesconfig ']'
++ CONFIG_NAME=allyesconfig
++ echo 'Valid config name detected: allyesconfig'
+Valid config name detected: allyesconfig
++ NEW_CMD='\n\nKBUILD_USERCFLAGS += -Wno-everything -Wno-address-of-packed-member -g -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang /users/kshxtij/HonsProject/IRDumper/build/lib/libDumper.so\nKBUILD_CFLAGS += -Wno-everything -g -Wno-address-of-packed-member -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang /users/kshxtij/HonsProject/IRDumper/build/lib/libDumper.so'
++ '[' '!' -f kernels/linux-v6.11/Makefile.bak ']'
++ cp kernels/linux-v6.11/Makefile kernels/linux-v6.11/Makefile.bak
++ echo 'Backed up Makefile'
+Backed up Makefile
++ echo -e '\n\nKBUILD_USERCFLAGS' += -Wno-everything -Wno-address-of-packed-member -g -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang '/users/kshxtij/HonsProject/IRDumper/build/lib/libDumper.so\nKBUILD_CFLAGS' += -Wno-everything -g -Wno-address-of-packed-member -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang /users/kshxtij/HonsProject/IRDumper/build/lib/libDumper.so
++ cat kernels/linux-v6.11/Makefile.bak kernels/linux-v6.11/IRDumper.cmd
++ cd kernels/linux-v6.11
++ echo 'Clearing old build'
+Clearing old build
++ make clean
+  CLEAN   arch/x86/boot/compressed
+  CLEAN   arch/x86/boot
+  CLEAN   arch/x86/entry/vdso
+  CLEAN   arch/x86/kernel/cpu
+  CLEAN   arch/x86/kernel
+  CLEAN   arch/x86/realmode/rm
+  CLEAN   arch/x86/tools
+  CLEAN   arch/x86/lib
+  CLEAN   certs
+  CLEAN   drivers/firmware/efi/libstub
+  CLEAN   drivers/scsi
+  CLEAN   drivers/tty/vt
+  CLEAN   init
+  CLEAN   lib
+  CLEAN   net/wireless
+  CLEAN   security/selinux
+  CLEAN   usr
+  CLEAN   .
+  CLEAN   modules.builtin modules.builtin.modinfo .vmlinux.export.c
++ make allyesconfig
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+#
+# configuration written to .config
+#
++ echo 1
+++ nproc
++ make CC=/users/kshxtij/HonsProject/llvm-project/prefix/bin/clang CFLAGS_KERNEL=-Wno-everything -j40 -k -i
+  SYNC    include/config/auto.conf.cmd
+*
+* Restart config...
+*
+*
+* Memory initialization
+*
+Initialize kernel stack variables at function entry
+> 1. no automatic stack variable initialization (weakest) (INIT_STACK_NONE)
+  2. pattern-init everything (strongest) (INIT_STACK_ALL_PATTERN) (NEW)
+  3. zero-init everything (strongest and safest) (INIT_STACK_ALL_ZERO) (NEW)
+choice[1-3?]: 1
+Enable heap memory zeroing on allocation by default (INIT_ON_ALLOC_DEFAULT_ON) [Y/n/?] y
+Enable heap memory zeroing on free by default (INIT_ON_FREE_DEFAULT_ON) [Y/n/?] y
+  GEN     arch/x86/include/generated/asm/orc_hash.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_32.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_64.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_x32.h
+  SYSTBL  arch/x86/include/generated/asm/syscalls_32.h
+  SYSHDR  arch/x86/include/generated/asm/unistd_32_ia32.h
+  SYSHDR  arch/x86/include/generated/asm/unistd_64_x32.h
+  SYSTBL  arch/x86/include/generated/asm/syscalls_64.h
+  SYSTBL  arch/x86/include/generated/asm/syscalls_x32.h
+  HYPERCALLS arch/x86/include/generated/asm/xen-hypercalls.h
+mkdir -p /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool && make O=/users/kshxtij/HonsProject/kernels/linux-v6.11 subdir=tools/objtool --no-print-directory -C objtool 
+  HOSTCC  arch/x86/tools/relocs_32.o
+  HOSTCC  arch/x86/tools/relocs_64.o
+  HOSTCC  arch/x86/tools/relocs_common.o
+  HOSTCC  scripts/unifdef
+  HOSTCC  scripts/dtc/dtc.o
+  HOSTCC  scripts/dtc/flattree.o
+  HOSTCC  scripts/dtc/fstree.o
+  HOSTCC  scripts/dtc/data.o
+  HOSTCC  scripts/dtc/livetree.o
+  HOSTCC  scripts/dtc/treesource.o
+  HOSTCC  scripts/dtc/srcpos.o
+  HOSTCC  scripts/dtc/checks.o
+  HOSTCC  scripts/dtc/util.o
+  LEX     scripts/dtc/dtc-lexer.lex.c
+  YACC    scripts/dtc/dtc-parser.tab.[ch]
+  HOSTCC  scripts/dtc/libfdt/fdt.o
+  HOSTCC  scripts/dtc/libfdt/fdt_ro.o
+  HOSTCC  scripts/dtc/libfdt/fdt_wip.o
+  HOSTCC  scripts/dtc/libfdt/fdt_sw.o
+  HOSTCC  scripts/dtc/libfdt/fdt_rw.o
+  HOSTCC  scripts/dtc/libfdt/fdt_strerror.o
+  HOSTCC  scripts/dtc/libfdt/fdt_empty_tree.o
+  HOSTCC  scripts/dtc/libfdt/fdt_addresses.o
+  HOSTCC  scripts/dtc/libfdt/fdt_overlay.o
+  HOSTCC  scripts/dtc/fdtoverlay.o
+  HOSTCC  /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/fixdep.o
+  HOSTLD  /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/fixdep-in.o
+  LINK    /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/fixdep
+  HOSTCC  scripts/dtc/dtc-lexer.lex.o
+  HOSTCC  scripts/dtc/dtc-parser.tab.o
+  INSTALL libsubcmd_headers
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/exec-cmd.o
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/help.o
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/pager.o
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/parse-options.o
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/run-command.o
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/sigchain.o
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/subcmd-config.o
+  HOSTLD  scripts/dtc/fdtoverlay
+  HOSTLD  arch/x86/tools/relocs
+  HDRINST usr/include/asm-generic/int-ll64.h
+  HDRINST usr/include/asm-generic/int-l64.h
+  HDRINST usr/include/asm-generic/setup.h
+  HDRINST usr/include/asm-generic/hugetlb_encode.h
+  HDRINST usr/include/asm-generic/socket.h
+  HDRINST usr/include/asm-generic/errno-base.h
+  HDRINST usr/include/asm-generic/stat.h
+  HDRINST usr/include/asm-generic/msgbuf.h
+  HDRINST usr/include/asm-generic/sockios.h
+  HDRINST usr/include/asm-generic/ioctls.h
+  HDRINST usr/include/asm-generic/kvm_para.h
+  HDRINST usr/include/asm-generic/poll.h
+  HDRINST usr/include/asm-generic/ucontext.h
+  HDRINST usr/include/asm-generic/siginfo.h
+  HDRINST usr/include/asm-generic/ioctl.h
+  HDRINST usr/include/asm-generic/termios.h
+  HDRINST usr/include/asm-generic/termbits.h
+  HDRINST usr/include/asm-generic/bitsperlong.h
+  HDRINST usr/include/asm-generic/resource.h
+  HDRINST usr/include/asm-generic/bpf_perf_event.h
+  HDRINST usr/include/asm-generic/auxvec.h
+  HDRINST usr/include/asm-generic/errno.h
+  HDRINST usr/include/asm-generic/shmbuf.h
+  HDRINST usr/include/asm-generic/swab.h
+  HDRINST usr/include/asm-generic/statfs.h
+  HDRINST usr/include/asm-generic/mman.h
+  HDRINST usr/include/asm-generic/termbits-common.h
+  HDRINST usr/include/asm-generic/mman-common.h
+  HDRINST usr/include/asm-generic/param.h
+  HDRINST usr/include/asm-generic/unistd.h
+  HDRINST usr/include/asm-generic/fcntl.h
+  HDRINST usr/include/asm-generic/signal-defs.h
+  HDRINST usr/include/asm-generic/ipcbuf.h
+  HDRINST usr/include/asm-generic/posix_types.h
+  HDRINST usr/include/asm-generic/signal.h
+  HDRINST usr/include/asm-generic/sembuf.h
+  HDRINST usr/include/asm-generic/types.h
+  HDRINST usr/include/drm/pvr_drm.h
+  HDRINST usr/include/drm/i915_drm.h
+  HDRINST usr/include/drm/qxl_drm.h
+  HDRINST usr/include/drm/xe_drm.h
+  HDRINST usr/include/drm/habanalabs_accel.h
+  HDRINST usr/include/drm/omap_drm.h
+  HDRINST usr/include/drm/exynos_drm.h
+  HDRINST usr/include/drm/etnaviv_drm.h
+  HDRINST usr/include/drm/ivpu_accel.h
+  HDRINST usr/include/drm/virtgpu_drm.h
+  HDRINST usr/include/drm/nouveau_drm.h
+  HDRINST usr/include/drm/panthor_drm.h
+  HDRINST usr/include/drm/v3d_drm.h
+  HDRINST usr/include/drm/msm_drm.h
+  HDRINST usr/include/drm/armada_drm.h
+  HDRINST usr/include/drm/amdgpu_drm.h
+  HDRINST usr/include/drm/drm.h
+  HDRINST usr/include/drm/drm_mode.h
+  HDRINST usr/include/drm/vgem_drm.h
+  HDRINST usr/include/drm/radeon_drm.h
+  HDRINST usr/include/drm/vc4_drm.h
+  HDRINST usr/include/drm/qaic_accel.h
+  HDRINST usr/include/drm/drm_fourcc.h
+  HDRINST usr/include/drm/vmwgfx_drm.h
+  HDRINST usr/include/drm/panfrost_drm.h
+  HDRINST usr/include/drm/lima_drm.h
+  HDRINST usr/include/drm/tegra_drm.h
+  HDRINST usr/include/drm/drm_sarea.h
+  HDRINST usr/include/linux/watchdog.h
+  HDRINST usr/include/linux/fsi.h
+  HDRINST usr/include/linux/if_plip.h
+  HDRINST usr/include/linux/ppdev.h
+  HDRINST usr/include/linux/if_xdp.h
+  HDRINST usr/include/linux/virtio_config.h
+  HDRINST usr/include/linux/efs_fs_sb.h
+  HDRINST usr/include/linux/virtio_gpu.h
+  HDRINST usr/include/linux/dma-buf.h
+  HDRINST usr/include/linux/virtio_net.h
+  HDRINST usr/include/linux/pg.h
+  HDRINST usr/include/linux/v4l2-dv-timings.h
+  HDRINST usr/include/linux/loadpin.h
+  HDRINST usr/include/linux/arcfb.h
+  HDRINST usr/include/linux/atm_zatm.h
+  HDRINST usr/include/linux/dm-ioctl.h
+  HDRINST usr/include/linux/fpga-dfl.h
+  HDRINST usr/include/linux/usbdevice_fs.h
+  HDRINST usr/include/linux/blkpg.h
+  HDRINST usr/include/linux/can.h
+  HDRINST usr/include/linux/ipmi_ssif_bmc.h
+  HDRINST usr/include/linux/switchtec_ioctl.h
+  HDRINST usr/include/linux/iommufd.h
+  HDRINST usr/include/linux/virtio_input.h
+  HDRINST usr/include/linux/v4l2-common.h
+  HDRINST usr/include/linux/if_ppp.h
+  HDRINST usr/include/linux/ivtv.h
+  HDRINST usr/include/linux/atalk.h
+  HDRINST usr/include/linux/igmp.h
+  HDRINST usr/include/linux/btrfs.h
+  HDRINST usr/include/linux/seg6_genl.h
+  HDRINST usr/include/linux/qrtr.h
+  HDRINST usr/include/linux/pkt_cls.h
+  HDRINST usr/include/linux/misc/bcm_vk.h
+  HDRINST usr/include/linux/net_namespace.h
+  HDRINST usr/include/linux/wireless.h
+  HDRINST usr/include/linux/i2c-dev.h
+  HDRINST usr/include/linux/acrn.h
+  HDRINST usr/include/linux/usbip.h
+  HDRINST usr/include/linux/netconf.h
+  HDRINST usr/include/linux/if_tunnel.h
+  HDRINST usr/include/linux/irqnr.h
+  HDRINST usr/include/linux/radeonfb.h
+  HDRINST usr/include/linux/snmp.h
+  HDRINST usr/include/linux/virtio_fs.h
+  HDRINST usr/include/linux/phonet.h
+  HDRINST usr/include/linux/virtio_pci.h
+  HDRINST usr/include/linux/thermal.h
+  HDRINST usr/include/linux/udf_fs_i.h
+  HDRINST usr/include/linux/smc.h
+  HDRINST usr/include/linux/btf.h
+  HDRINST usr/include/linux/hdreg.h
+  HDRINST usr/include/linux/times.h
+  HDRINST usr/include/linux/seg6_hmac.h
+  HDRINST usr/include/linux/bsg.h
+  HDRINST usr/include/linux/nilfs2_api.h
+  HDRINST usr/include/linux/tcp_metrics.h
+  HDRINST usr/include/linux/keyboard.h
+  HDRINST usr/include/linux/atmdev.h
+  HDRINST usr/include/linux/tiocl.h
+  HDRINST usr/include/linux/lwtunnel.h
+  HDRINST usr/include/linux/stddef.h
+  HDRINST usr/include/linux/btrfs_tree.h
+  HDRINST usr/include/linux/fsverity.h
+  HDRINST usr/include/linux/personality.h
+  HDRINST usr/include/linux/tps6594_pfsm.h
+  HDRINST usr/include/linux/hyperv.h
+  HDRINST usr/include/linux/udp.h
+  HDRINST usr/include/linux/vmcore.h
+  HDRINST usr/include/linux/psp-sev.h
+  HDRINST usr/include/linux/mctp.h
+  HDRINST usr/include/linux/batman_adv.h
+  HDRINST usr/include/linux/rseq.h
+  HDRINST usr/include/linux/socket.h
+  HDRINST usr/include/linux/fadvise.h
+  HDRINST usr/include/linux/amt.h
+  HDRINST usr/include/linux/virtio_9p.h
+  HDRINST usr/include/linux/netfilter_ipv4.h
+  HDRINST usr/include/linux/if_arcnet.h
+  HDRINST usr/include/linux/ivtvfb.h
+  HDRINST usr/include/linux/wwan.h
+  HDRINST usr/include/linux/matroxfb.h
+  HDRINST usr/include/linux/ethtool_netlink.h
+  HDRINST usr/include/linux/hdlc.h
+  HDRINST usr/include/linux/blktrace_api.h
+  HDRINST usr/include/linux/vt.h
+  HDRINST usr/include/linux/if_vlan.h
+  HDRINST usr/include/linux/vsockmon.h
+  HDRINST usr/include/linux/atmsvc.h
+  HDRINST usr/include/linux/stat.h
+  HDRINST usr/include/linux/vduse.h
+  HDRINST usr/include/linux/auto_dev-ioctl.h
+  HDRINST usr/include/linux/sem.h
+  HDRINST usr/include/linux/ntsync.h
+  HDRINST usr/include/linux/if_x25.h
+  HDRINST usr/include/linux/sockios.h
+  HDRINST usr/include/linux/xfrm.h
+  HDRINST usr/include/linux/packet_diag.h
+  HDRINST usr/include/linux/tipc.h
+  HDRINST usr/include/linux/f2fs.h
+  HDRINST usr/include/linux/nl80211-vnd-intel.h
+  HDRINST usr/include/linux/kernelcapi.h
+  HDRINST usr/include/linux/hdlcdrv.h
+  HDRINST usr/include/linux/mroute.h
+  HDRINST usr/include/linux/string.h
+  HDRINST usr/include/linux/if_infiniband.h
+  HDRINST usr/include/linux/un.h
+  HDRINST usr/include/linux/ultrasound.h
+  HDRINST usr/include/linux/reiserfs_fs.h
+  HDRINST usr/include/linux/fou.h
+  HDRINST usr/include/linux/am437x-vpfe.h
+  HDRINST usr/include/linux/fiemap.h
+  HDRINST usr/include/linux/pps.h
+  HDRINST usr/include/linux/netfilter_ipv4/ip_tables.h
+  HDRINST usr/include/linux/netfilter_ipv4/ipt_REJECT.h
+  HDRINST usr/include/linux/netfilter_ipv4/ipt_ttl.h
+  HDRINST usr/include/linux/netfilter_ipv4/ipt_ECN.h
+  HDRINST usr/include/linux/netfilter_ipv4/ipt_ecn.h
+  HDRINST usr/include/linux/netfilter_ipv4/ipt_CLUSTERIP.h
+  HDRINST usr/include/linux/netfilter_ipv4/ipt_LOG.h
+  HDRINST usr/include/linux/netfilter_ipv4/ipt_ah.h
+  HDRINST usr/include/linux/netfilter_ipv4/ipt_TTL.h
+  HDRINST usr/include/linux/memfd.h
+  HDRINST usr/include/linux/mptcp_pm.h
+  HDRINST usr/include/linux/auto_fs.h
+  HDRINST usr/include/linux/cyclades.h
+  HDRINST usr/include/linux/tty.h
+  HDRINST usr/include/linux/virtio_snd.h
+  HDRINST usr/include/linux/adfs_fs.h
+  HDRINST usr/include/linux/mmc/ioctl.h
+  HDRINST usr/include/linux/bpqether.h
+  HDRINST usr/include/linux/chio.h
+  HDRINST usr/include/linux/atmclip.h
+  HDRINST usr/include/linux/erspan.h
+  HDRINST usr/include/linux/cfm_bridge.h
+  HDRINST usr/include/linux/nfc.h
+  HDRINST usr/include/linux/tc_act/tc_defact.h
+  HDRINST usr/include/linux/tc_act/tc_skbmod.h
+  HDRINST usr/include/linux/tc_act/tc_pedit.h
+  HDRINST usr/include/linux/tc_act/tc_mirred.h
+  HDRINST usr/include/linux/tc_act/tc_vlan.h
+  HDRINST usr/include/linux/tc_act/tc_tunnel_key.h
+  HDRINST usr/include/linux/tc_act/tc_skbedit.h
+  HDRINST usr/include/linux/tc_act/tc_gate.h
+  HDRINST usr/include/linux/tc_act/tc_ife.h
+  HDRINST usr/include/linux/tc_act/tc_connmark.h
+  HDRINST usr/include/linux/tc_act/tc_sample.h
+  HDRINST usr/include/linux/tc_act/tc_gact.h
+  HDRINST usr/include/linux/tc_act/tc_nat.h
+  HDRINST usr/include/linux/tc_act/tc_ctinfo.h
+  HDRINST usr/include/linux/tc_act/tc_mpls.h
+  HDRINST usr/include/linux/tc_act/tc_bpf.h
+  HDRINST usr/include/linux/tc_act/tc_ct.h
+  HDRINST usr/include/linux/tc_act/tc_csum.h
+  HDRINST usr/include/linux/if_ether.h
+  HDRINST usr/include/linux/gameport.h
+  HDRINST usr/include/linux/target_core_user.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_hl.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_ipv6header.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_NPT.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6_tables.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_REJECT.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_srh.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_LOG.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_mh.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_ah.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_frag.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_rt.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_opts.h
+  HDRINST usr/include/linux/netfilter_ipv6/ip6t_HL.h
+  HDRINST usr/include/linux/virtio_rng.h
+  HDRINST usr/include/linux/if_link.h
+  HDRINST usr/include/linux/lirc.h
+  HDRINST usr/include/linux/kvm_para.h
+  HDRINST usr/include/linux/limits.h
+  HDRINST usr/include/linux/virtio_crypto.h
+  HDRINST usr/include/linux/nbd.h
+  HDRINST usr/include/linux/poll.h
+  HDRINST usr/include/linux/vm_sockets_diag.h
+  HDRINST usr/include/linux/gen_stats.h
+  HDRINST usr/include/linux/isdn/capicmd.h
+  HDRINST usr/include/linux/zorro.h
+  HDRINST usr/include/linux/nfs.h
+  HDRINST usr/include/linux/v4l2-controls.h
+  HDRINST usr/include/linux/cec.h
+  HDRINST usr/include/linux/neighbour.h
+  HDRINST usr/include/linux/userio.h
+  HDRINST usr/include/linux/udmabuf.h
+  HDRINST usr/include/linux/virtio_ring.h
+  HDRINST usr/include/linux/hsr_netlink.h
+  HDRINST usr/include/linux/isst_if.h
+  HDRINST usr/include/linux/coda.h
+  HDRINST usr/include/linux/surface_aggregator/dtx.h
+  HDRINST usr/include/linux/surface_aggregator/cdev.h
+  HDRINST usr/include/linux/lp.h
+  HDRINST usr/include/linux/adb.h
+  HDRINST usr/include/linux/icmp.h
+  HDRINST usr/include/linux/dns_resolver.h
+  HDRINST usr/include/linux/net.h
+  HDRINST usr/include/linux/aspeed-video.h
+  HDRINST usr/include/linux/nilfs2_ondisk.h
+  HDRINST usr/include/linux/ptrace.h
+  HDRINST usr/include/linux/cciss_ioctl.h
+  HDRINST usr/include/linux/netfilter_arp/arpt_mangle.h
+  HDRINST usr/include/linux/netfilter_arp/arp_tables.h
+  HDRINST usr/include/linux/io_uring.h
+  HDRINST usr/include/linux/virtio_vsock.h
+  HDRINST usr/include/linux/vfio.h
+  HDRINST usr/include/linux/netfilter.h
+  HDRINST usr/include/linux/route.h
+  LD      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/libsubcmd-in.o
+  HDRINST usr/include/linux/ip_vs.h
+  HDRINST usr/include/linux/nfs_fs.h
+  HDRINST usr/include/linux/bfs_fs.h
+  HDRINST usr/include/linux/virtio_types.h
+  HDRINST usr/include/linux/kcov.h
+  HDRINST usr/include/linux/if_arp.h
+  HDRINST usr/include/linux/x25.h
+  HDRINST usr/include/linux/media.h
+  HDRINST usr/include/linux/errqueue.h
+  HDRINST usr/include/linux/virtio_iommu.h
+  HDRINST usr/include/linux/firewire-cdev.h
+  HDRINST usr/include/linux/rio_mport_cdev.h
+  HDRINST usr/include/linux/fscrypt.h
+  HDRINST usr/include/linux/rpmsg_types.h
+  HDRINST usr/include/linux/apm_bios.h
+  HDRINST usr/include/linux/cec-funcs.h
+  HDRINST usr/include/linux/vtpm_proxy.h
+  HDRINST usr/include/linux/reiserfs_xattr.h
+  HDRINST usr/include/linux/openvswitch.h
+  HDRINST usr/include/linux/dma-heap.h
+  HDRINST usr/include/linux/cryptouser.h
+  HDRINST usr/include/linux/bits.h
+  HDRINST usr/include/linux/elf-fdpic.h
+  HDRINST usr/include/linux/mii.h
+  HDRINST usr/include/linux/nfsacl.h
+  HDRINST usr/include/linux/gsmmux.h
+  HDRINST usr/include/linux/ip6_tunnel.h
+  HDRINST usr/include/linux/atmmpc.h
+  HDRINST usr/include/linux/openat2.h
+  HDRINST usr/include/linux/ipsec.h
+  HDRINST usr/include/linux/android/binderfs.h
+  HDRINST usr/include/linux/android/binder.h
+  AR      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libsubcmd/libsubcmd.a
+  HDRINST usr/include/linux/nsm.h
+  HDRINST usr/include/linux/uhid.h
+  HDRINST usr/include/linux/mdio.h
+  HDRINST usr/include/linux/a.out.h
+  HDRINST usr/include/linux/ncsi.h
+  HDRINST usr/include/linux/msdos_fs.h
+  HDRINST usr/include/linux/atmlec.h
+  HDRINST usr/include/linux/posix_acl_xattr.h
+  HDRINST usr/include/linux/media/raspberrypi/pisp_be_config.h
+  HDRINST usr/include/linux/media/raspberrypi/pisp_common.h
+  HDRINST usr/include/linux/lsm.h
+  HDRINST usr/include/linux/mount.h
+  HDRINST usr/include/linux/rfkill.h
+  HDRINST usr/include/linux/atm_idt77105.h
+  HDRINST usr/include/linux/netdev.h
+  HDRINST usr/include/linux/vhost_types.h
+  HOSTLD  scripts/dtc/dtc
+  HDRINST usr/include/linux/vesa.h
+  HDRINST usr/include/linux/kernel.h
+  HDRINST usr/include/linux/net_tstamp.h
+  HDRINST usr/include/linux/kfd_sysfs.h
+  HDRINST usr/include/linux/smc_diag.h
+  HDRINST usr/include/linux/rpmsg.h
+  HDRINST usr/include/linux/sysinfo.h
+  HDRINST usr/include/linux/atm.h
+  HDRINST usr/include/linux/ndctl.h
+  HDRINST usr/include/linux/papr_pdsm.h
+  HDRINST usr/include/linux/nfs4.h
+  HDRINST usr/include/linux/tipc_netlink.h
+  HDRINST usr/include/linux/in.h
+  HDRINST usr/include/linux/aio_abi.h
+  HDRINST usr/include/linux/rtnetlink.h
+  HDRINST usr/include/linux/iso_fs.h
+  HDRINST usr/include/linux/rose.h
+  HDRINST usr/include/linux/mei_uuid.h
+  HDRINST usr/include/linux/ioctl.h
+  HDRINST usr/include/linux/hw_breakpoint.h
+  HDRINST usr/include/linux/input.h
+  HDRINST usr/include/linux/capability.h
+  HDRINST usr/include/linux/in_route.h
+  HDRINST usr/include/linux/if_pppox.h
+  HDRINST usr/include/linux/atm_eni.h
+  HDRINST usr/include/linux/kcmp.h
+  HDRINST usr/include/linux/ext4.h
+  HDRINST usr/include/linux/icmpv6.h
+  HDRINST usr/include/linux/qemu_fw_cfg.h
+  HDRINST usr/include/linux/nfs_idmap.h
+  HDRINST usr/include/linux/nfsd_netlink.h
+  HDRINST usr/include/linux/termios.h
+  HDRINST usr/include/linux/nl80211.h
+  HDRINST usr/include/linux/acct.h
+  HDRINST usr/include/linux/genwqe/genwqe_card.h
+  HDRINST usr/include/linux/nvme_ioctl.h
+  HDRINST usr/include/linux/fsl_mc.h
+  HDRINST usr/include/linux/fb.h
+  HDRINST usr/include/linux/sysctl.h
+  HDRINST usr/include/linux/close_range.h
+  HDRINST usr/include/linux/vbox_err.h
+  HDRINST usr/include/linux/gpio.h
+  HDRINST usr/include/linux/romfs_fs.h
+  HDRINST usr/include/linux/nfs2.h
+  HDRINST usr/include/linux/if_hippi.h
+  HDRINST usr/include/linux/rkisp1-config.h
+  HDRINST usr/include/linux/ipmi.h
+  HDRINST usr/include/linux/nubus.h
+  HDRINST usr/include/linux/resource.h
+  HDRINST usr/include/linux/tcp.h
+  HDRINST usr/include/linux/omap3isp.h
+  HDRINST usr/include/linux/taskstats.h
+  HDRINST usr/include/linux/reboot.h
+  HDRINST usr/include/linux/bpf_perf_event.h
+  HDRINST usr/include/linux/aspeed-lpc-ctrl.h
+  HDRINST usr/include/linux/xdp_diag.h
+  HDRINST usr/include/linux/atmbr2684.h
+  HDRINST usr/include/linux/ioprio.h
+  HDRINST usr/include/linux/media-bus-format.h
+  HDRINST usr/include/linux/comedi.h
+  HDRINST usr/include/linux/nfs3.h
+  HDRINST usr/include/linux/suspend_ioctls.h
+  HDRINST usr/include/linux/module.h
+  HDRINST usr/include/linux/cn_proc.h
+  HDRINST usr/include/linux/kcm.h
+  HDRINST usr/include/linux/virtio_console.h
+  HDRINST usr/include/linux/securebits.h
+  HDRINST usr/include/linux/auxvec.h
+  HDRINST usr/include/linux/errno.h
+  HDRINST usr/include/linux/perf_event.h
+  HDRINST usr/include/linux/scif_ioctl.h
+  HDRINST usr/include/linux/i2o-dev.h
+  HDRINST usr/include/linux/bpf.h
+  HDRINST usr/include/linux/tipc_sockets_diag.h
+  HDRINST usr/include/linux/vm_sockets.h
+  HDRINST usr/include/linux/virtio_scsi.h
+  HDRINST usr/include/linux/wireguard.h
+  HDRINST usr/include/linux/eventfd.h
+  HDRINST usr/include/linux/coresight-stm.h
+  HDRINST usr/include/linux/atm_nicstar.h
+  HDRINST usr/include/linux/uio.h
+  HDRINST usr/include/linux/atm_he.h
+  HDRINST usr/include/linux/sev-guest.h
+  HDRINST usr/include/linux/dccp.h
+  HDRINST usr/include/linux/tipc_config.h
+  HDRINST usr/include/linux/cxl_mem.h
+  HDRINST usr/include/linux/if_team.h
+  HDRINST usr/include/linux/batadv_packet.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/weak.o
+  HDRINST usr/include/linux/if.h
+  HDRINST usr/include/linux/virtio_scmi.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/check.o
+  HDRINST usr/include/linux/ila.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/special.o
+  HDRINST usr/include/linux/loop.h
+  HDRINST usr/include/linux/stm.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/builtin-check.o
+  HDRINST usr/include/linux/synclink.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/elf.o
+  HDRINST usr/include/linux/arm_sdei.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/arch/x86/special.o
+  HDRINST usr/include/linux/joystick.h
+  HDRINST usr/include/linux/audit.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/objtool.o
+  HDRINST usr/include/linux/edd.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/orc_gen.o
+  HDRINST usr/include/linux/bt-bmc.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/arch/x86/decode.o
+  HDRINST usr/include/linux/rtc.h
+  HDRINST usr/include/linux/timerfd.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/arch/x86/orc.o
+  HDRINST usr/include/linux/virtio_ids.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/orc_dump.o
+  HDRINST usr/include/linux/xilinx-v4l2-controls.h
+  HDRINST usr/include/linux/mei.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libstring.o
+  HDRINST usr/include/linux/hash_info.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/libctype.o
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/str_error_r.o
+  HDRINST usr/include/linux/kfd_ioctl.h
+  HDRINST usr/include/linux/handshake.h
+  CC      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/librbtree.o
+  HDRINST usr/include/linux/seg6_local.h
+  HDRINST usr/include/linux/mpls_iptunnel.h
+  HDRINST usr/include/linux/mempolicy.h
+  HDRINST usr/include/linux/dw100.h
+  HDRINST usr/include/linux/if_macsec.h
+  HDRINST usr/include/linux/bcm933xx_hcs.h
+  HDRINST usr/include/linux/mrp_bridge.h
+  HDRINST usr/include/linux/if_packet.h
+  HDRINST usr/include/linux/fuse.h
+  HDRINST usr/include/linux/kd.h
+  HDRINST usr/include/linux/jffs2.h
+  HDRINST usr/include/linux/vdpa.h
+  HDRINST usr/include/linux/mroute6.h
+  HDRINST usr/include/linux/swab.h
+  HOSTCC  scripts/kallsyms
+  HDRINST usr/include/linux/quota.h
+  HDRINST usr/include/linux/ife.h
+  HOSTCC  scripts/sorttable
+  HDRINST usr/include/linux/hidraw.h
+  HDRINST usr/include/linux/fanotify.h
+  HOSTCC  scripts/asn1_compiler
+  HDRINST usr/include/linux/pidfd.h
+  HDRINST usr/include/linux/hpet.h
+  HDRINST usr/include/linux/ipv6.h
+  HDRINST usr/include/linux/watch_queue.h
+  HDRINST usr/include/linux/signalfd.h
+  HDRINST usr/include/linux/byteorder/little_endian.h
+  HDRINST usr/include/linux/byteorder/big_endian.h
+  HDRINST usr/include/linux/elf.h
+  HDRINST usr/include/linux/scc.h
+  HDRINST usr/include/linux/parport.h
+  HDRINST usr/include/linux/seccomp.h
+  HDRINST usr/include/linux/agpgart.h
+  HDRINST usr/include/linux/netfilter_bridge.h
+  HOSTCC  scripts/sign-file
+  HDRINST usr/include/linux/input-event-codes.h
+  HDRINST usr/include/linux/mman.h
+  HOSTCC  scripts/insert-sys-cert
+  HDRINST usr/include/linux/rxrpc.h
+  HDRINST usr/include/linux/virtio_blk.h
+  HDRINST usr/include/linux/netfilter/xt_length.h
+  HDRINST usr/include/linux/netfilter/xt_MARK.h
+  HDRINST usr/include/linux/netfilter/xt_iprange.h
+  HDRINST usr/include/linux/netfilter/xt_mark.h
+  HDRINST usr/include/linux/netfilter/xt_realm.h
+  HDRINST usr/include/linux/netfilter/xt_TEE.h
+  HOSTCC  scripts/genksyms/genksyms.o
+  HDRINST usr/include/linux/netfilter/xt_dccp.h
+  HDRINST usr/include/linux/netfilter/xt_recent.h
+  HDRINST usr/include/linux/netfilter/xt_dscp.h
+  YACC    scripts/genksyms/parse.tab.[ch]
+  HDRINST usr/include/linux/netfilter/xt_policy.h
+  HDRINST usr/include/linux/netfilter/xt_limit.h
+  LEX     scripts/genksyms/lex.lex.c
+  HDRINST usr/include/linux/netfilter/nf_synproxy.h
+  HDRINST usr/include/linux/netfilter/xt_TCPMSS.h
+  HDRINST usr/include/linux/netfilter/nf_conntrack_common.h
+  HDRINST usr/include/linux/netfilter/nf_conntrack_sctp.h
+  HDRINST usr/include/linux/netfilter/nf_log.h
+  HDRINST usr/include/linux/netfilter/xt_addrtype.h
+  HDRINST usr/include/linux/netfilter/xt_statistic.h
+  HDRINST usr/include/linux/netfilter/xt_l2tp.h
+  HDRINST usr/include/linux/netfilter/xt_tcpmss.h
+  HDRINST usr/include/linux/netfilter/xt_devgroup.h
+  HDRINST usr/include/linux/netfilter/nf_tables_compat.h
+  HDRINST usr/include/linux/netfilter/xt_ipvs.h
+  HDRINST usr/include/linux/netfilter/nf_nat.h
+  HDRINST usr/include/linux/netfilter/xt_TCPOPTSTRIP.h
+  HDRINST usr/include/linux/netfilter/x_tables.h
+  HDRINST usr/include/linux/netfilter/xt_time.h
+  HDRINST usr/include/linux/netfilter/nf_conntrack_ftp.h
+  HDRINST usr/include/linux/netfilter/xt_AUDIT.h
+  HDRINST usr/include/linux/netfilter/xt_HMARK.h
+  HDRINST usr/include/linux/netfilter/xt_connbytes.h
+  HDRINST usr/include/linux/netfilter/xt_SYNPROXY.h
+  HDRINST usr/include/linux/netfilter/xt_quota.h
+  HOSTCC  scripts/selinux/genheaders/genheaders
+  HDRINST usr/include/linux/netfilter/xt_TPROXY.h
+  HDRINST usr/include/linux/netfilter/xt_bpf.h
+  HDRINST usr/include/linux/netfilter/xt_rateest.h
+  HOSTCC  scripts/selinux/mdp/mdp
+  HDRINST usr/include/linux/netfilter/xt_DSCP.h
+  HDRINST usr/include/linux/netfilter/xt_string.h
+  HDRINST usr/include/linux/netfilter/xt_tcpudp.h
+  HDRINST usr/include/linux/netfilter/xt_cluster.h
+  HDRINST usr/include/linux/netfilter/xt_socket.h
+  HDRINST usr/include/linux/netfilter/xt_cgroup.h
+  HDRINST usr/include/linux/netfilter/xt_mac.h
+  HDRINST usr/include/linux/netfilter/xt_sctp.h
+  HDRINST usr/include/linux/netfilter/nf_tables.h
+  HDRINST usr/include/linux/netfilter/xt_physdev.h
+  HDRINST usr/include/linux/netfilter/xt_ipcomp.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_acct.h
+  HDRINST usr/include/linux/netfilter/xt_connlimit.h
+  HDRINST usr/include/linux/netfilter/xt_owner.h
+  HDRINST usr/include/linux/netfilter/xt_esp.h
+  HDRINST usr/include/linux/netfilter/xt_helper.h
+  HDRINST usr/include/linux/netfilter/xt_NFLOG.h
+  HDRINST usr/include/linux/netfilter/xt_u32.h
+  HDRINST usr/include/linux/netfilter/xt_IDLETIMER.h
+  HDRINST usr/include/linux/netfilter/xt_pkttype.h
+  HDRINST usr/include/linux/netfilter/ipset/ip_set.h
+  HDRINST usr/include/linux/netfilter/ipset/ip_set_bitmap.h
+  HDRINST usr/include/linux/netfilter/ipset/ip_set_list.h
+  HDRINST usr/include/linux/netfilter/ipset/ip_set_hash.h
+  HDRINST usr/include/linux/netfilter/xt_connlabel.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_log.h
+  HDRINST usr/include/linux/netfilter/nf_conntrack_tcp.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_conntrack.h
+  HDRINST usr/include/linux/netfilter/xt_nfacct.h
+  HDRINST usr/include/linux/netfilter/xt_CLASSIFY.h
+  HDRINST usr/include/linux/netfilter/nf_conntrack_tuple_common.h
+  HDRINST usr/include/linux/netfilter/xt_state.h
+  HDRINST usr/include/linux/netfilter/xt_CT.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_hook.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_queue.h
+  HDRINST usr/include/linux/netfilter/xt_RATEEST.h
+  HDRINST usr/include/linux/netfilter/xt_SECMARK.h
+  HDRINST usr/include/linux/netfilter/xt_cpu.h
+  HDRINST usr/include/linux/netfilter/xt_comment.h
+  HDRINST usr/include/linux/netfilter/xt_CONNMARK.h
+  HDRINST usr/include/linux/netfilter/xt_NFQUEUE.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_compat.h
+  HDRINST usr/include/linux/netfilter/xt_rpfilter.h
+  HDRINST usr/include/linux/netfilter/xt_hashlimit.h
+  HDRINST usr/include/linux/netfilter/xt_conntrack.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_osf.h
+  HDRINST usr/include/linux/netfilter/xt_LED.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_cthelper.h
+  HDRINST usr/include/linux/netfilter/xt_osf.h
+  HDRINST usr/include/linux/netfilter/xt_CHECKSUM.h
+  HDRINST usr/include/linux/netfilter/xt_multiport.h
+  HDRINST usr/include/linux/netfilter/xt_CONNSECMARK.h
+  HDRINST usr/include/linux/netfilter/nfnetlink_cttimeout.h
+  HDRINST usr/include/linux/netfilter/xt_set.h
+  HDRINST usr/include/linux/netfilter/nfnetlink.h
+  HDRINST usr/include/linux/netfilter/xt_ecn.h
+  HDRINST usr/include/linux/netfilter/xt_LOG.h
+  HDRINST usr/include/linux/netfilter/xt_connmark.h
+  HDRINST usr/include/linux/spi/spidev.h
+  HDRINST usr/include/linux/spi/spi.h
+  HDRINST usr/include/linux/ax25.h
+  HDRINST usr/include/linux/cdrom.h
+  HDRINST usr/include/linux/zorro_ids.h
+  HDRINST usr/include/linux/omapfb.h
+  HDRINST usr/include/linux/um_timetravel.h
+  HDRINST usr/include/linux/msg.h
+  HDRINST usr/include/linux/remoteproc_cdev.h
+  HDRINST usr/include/linux/nitro_enclaves.h
+  HDRINST usr/include/linux/nexthop.h
+  HDRINST usr/include/linux/tty_flags.h
+  HDRINST usr/include/linux/atmppp.h
+  HDRINST usr/include/linux/pkt_sched.h
+  HDRINST usr/include/linux/dlmconstants.h
+  HDRINST usr/include/linux/inotify.h
+  HDRINST usr/include/linux/sound.h
+  HDRINST usr/include/linux/pr.h
+  HDRINST usr/include/linux/capi.h
+  HDRINST usr/include/linux/sunrpc/debug.h
+  HDRINST usr/include/linux/libc-compat.h
+  HDRINST usr/include/linux/selinux_netlink.h
+  HDRINST usr/include/linux/wait.h
+  HDRINST usr/include/linux/uinput.h
+  HDRINST usr/include/linux/utime.h
+  HDRINST usr/include/linux/if_alg.h
+  HDRINST usr/include/linux/pcitest.h
+  HDRINST usr/include/linux/atmarp.h
+  HDRINST usr/include/linux/rio_cm_cdev.h
+  HDRINST usr/include/linux/tee.h
+  HDRINST usr/include/linux/soundcard.h
+  HDRINST usr/include/linux/pmu.h
+  HDRINST usr/include/linux/if_eql.h
+  HDRINST usr/include/linux/psci.h
+  HDRINST usr/include/linux/dqblk_xfs.h
+  HDRINST usr/include/linux/prctl.h
+  HDRINST usr/include/linux/serial.h
+  HDRINST usr/include/linux/dm-log-userspace.h
+  HDRINST usr/include/linux/fdreg.h
+  HDRINST usr/include/linux/param.h
+  HDRINST usr/include/linux/nfsd/stats.h
+  HDRINST usr/include/linux/nfsd/debug.h
+  HDRINST usr/include/linux/nfsd/export.h
+  HDRINST usr/include/linux/nfsd/cld.h
+  HDRINST usr/include/linux/sched.h
+  HDRINST usr/include/linux/smiapp.h
+  HDRINST usr/include/linux/dlm_device.h
+  HDRINST usr/include/linux/netdevice.h
+  HDRINST usr/include/linux/psp-dbc.h
+  HDRINST usr/include/linux/mmtimer.h
+  HDRINST usr/include/linux/coff.h
+  HDRINST usr/include/linux/cycx_cfm.h
+  HDRINST usr/include/linux/qnx4_fs.h
+  HDRINST usr/include/linux/fd.h
+  HDRINST usr/include/linux/fs.h
+  HDRINST usr/include/linux/cuda.h
+  HDRINST usr/include/linux/shm.h
+  HDRINST usr/include/linux/npcm-video.h
+  HDRINST usr/include/linux/rds.h
+  HDRINST usr/include/linux/minix_fs.h
+  HDRINST usr/include/linux/netfilter_ipv6.h
+  HDRINST usr/include/linux/rpl.h
+  HDRINST usr/include/linux/keyctl.h
+  HDRINST usr/include/linux/raid/md_u.h
+  HDRINST usr/include/linux/raid/md_p.h
+  HDRINST usr/include/linux/posix_acl.h
+  HDRINST usr/include/linux/fib_rules.h
+  HDRINST usr/include/linux/falloc.h
+  HDRINST usr/include/linux/unistd.h
+  HDRINST usr/include/linux/ipmi_bmc.h
+  HDRINST usr/include/linux/netlink.h
+  HDRINST usr/include/linux/psample.h
+  HDRINST usr/include/linux/caif/caif_socket.h
+  HDRINST usr/include/linux/caif/if_caif.h
+  HDRINST usr/include/linux/sync_file.h
+  HDRINST usr/include/linux/ptp_clock.h
+  HDRINST usr/include/linux/if_addr.h
+  HDRINST usr/include/linux/pktcdvd.h
+  HDRINST usr/include/linux/virtio_mmio.h
+  HDRINST usr/include/linux/fcntl.h
+  HDRINST usr/include/linux/elf-em.h
+  HDRINST usr/include/linux/sctp.h
+  HDRINST usr/include/linux/videodev2.h
+  HDRINST usr/include/linux/patchkey.h
+  HDRINST usr/include/linux/ioam6_iptunnel.h
+  HDRINST usr/include/linux/serial_reg.h
+  HDRINST usr/include/linux/inet_diag.h
+  HDRINST usr/include/linux/sonypi.h
+  HDRINST usr/include/linux/v4l2-subdev.h
+  HDRINST usr/include/linux/l2tp.h
+  HDRINST usr/include/linux/serio.h
+  HDRINST usr/include/linux/mtio.h
+  HDRINST usr/include/linux/atmioc.h
+  HDRINST usr/include/linux/hsi/hsi_char.h
+  HDRINST usr/include/linux/hsi/cs-protocol.h
+  HDRINST usr/include/linux/auto_fs4.h
+  HDRINST usr/include/linux/max2175.h
+  HDRINST usr/include/linux/tc_ematch/tc_em_ipt.h
+  HDRINST usr/include/linux/tc_ematch/tc_em_text.h
+  HDRINST usr/include/linux/tc_ematch/tc_em_cmp.h
+  HDRINST usr/include/linux/tc_ematch/tc_em_meta.h
+  HDRINST usr/include/linux/tc_ematch/tc_em_nbyte.h
+  HDRINST usr/include/linux/sched/types.h
+  HDRINST usr/include/linux/phantom.h
+  HDRINST usr/include/linux/membarrier.h
+  HDRINST usr/include/linux/thp7312.h
+  HDRINST usr/include/linux/screen_info.h
+  HDRINST usr/include/linux/seg6_iptunnel.h
+  HDRINST usr/include/linux/userfaultfd.h
+  HDRINST usr/include/linux/cachefiles.h
+  HDRINST usr/include/linux/if_phonet.h
+  HDRINST usr/include/linux/seg6.h
+  HDRINST usr/include/linux/rpl_iptunnel.h
+  HDRINST usr/include/linux/veth.h
+  HDRINST usr/include/linux/vfio_zdev.h
+  HDRINST usr/include/linux/ccs.h
+  HDRINST usr/include/linux/devlink.h
+  HDRINST usr/include/linux/random.h
+  HDRINST usr/include/linux/hdlc/ioctl.h
+  HDRINST usr/include/linux/pci_regs.h
+  HDRINST usr/include/linux/if_fc.h
+  HDRINST usr/include/linux/nvram.h
+  HDRINST usr/include/linux/if_slip.h
+  HDRINST usr/include/linux/dlm.h
+  HDRINST usr/include/linux/toshiba.h
+  HDRINST usr/include/linux/virtio_bt.h
+  HDRINST usr/include/linux/sock_diag.h
+  HDRINST usr/include/linux/usb/tmc.h
+  HDRINST usr/include/linux/usb/video.h
+  HDRINST usr/include/linux/usb/audio.h
+  HDRINST usr/include/linux/usb/g_printer.h
+  HDRINST usr/include/linux/usb/ch11.h
+  HDRINST usr/include/linux/usb/g_uvc.h
+  HDRINST usr/include/linux/usb/functionfs.h
+  HDRINST usr/include/linux/usb/ch9.h
+  HDRINST usr/include/linux/usb/cdc-wdm.h
+  HDRINST usr/include/linux/usb/raw_gadget.h
+  HDRINST usr/include/linux/usb/charger.h
+  HDRINST usr/include/linux/usb/gadgetfs.h
+  HDRINST usr/include/linux/usb/cdc.h
+  HDRINST usr/include/linux/usb/midi.h
+  HDRINST usr/include/linux/mpls.h
+  HDRINST usr/include/linux/net_dropmon.h
+  HDRINST usr/include/linux/gtp.h
+  HDRINST usr/include/linux/nsfs.h
+  HDRINST usr/include/linux/ppp-comp.h
+  HDRINST usr/include/linux/pfrut.h
+  HDRINST usr/include/linux/can/j1939.h
+  HDRINST usr/include/linux/can/gw.h
+  HDRINST usr/include/linux/can/bcm.h
+  HDRINST usr/include/linux/can/vxcan.h
+  HDRINST usr/include/linux/can/raw.h
+  HDRINST usr/include/linux/can/isotp.h
+  HDRINST usr/include/linux/can/netlink.h
+  HDRINST usr/include/linux/can/error.h
+  HDRINST usr/include/linux/iio/buffer.h
+  HDRINST usr/include/linux/iio/events.h
+  HDRINST usr/include/linux/iio/types.h
+  HDRINST usr/include/linux/uleds.h
+  HDRINST usr/include/linux/utsname.h
+  HDRINST usr/include/linux/if_fddi.h
+  HDRINST usr/include/linux/blkzoned.h
+  HDRINST usr/include/linux/cgroupstats.h
+  HDRINST usr/include/linux/vhost.h
+  HDRINST usr/include/linux/filter.h
+  HDRINST usr/include/linux/uvcvideo.h
+  HDRINST usr/include/linux/if_cablemodem.h
+  HDRINST usr/include/linux/fsl_hypervisor.h
+  HDRINST usr/include/linux/ioam6.h
+  HDRINST usr/include/linux/ipv6_route.h
+  HDRINST usr/include/linux/counter.h
+  HDRINST usr/include/linux/virtio_mem.h
+  HDRINST usr/include/linux/cramfs_fs.h
+  HDRINST usr/include/linux/nbd-netlink.h
+  HDRINST usr/include/linux/if_addrlabel.h
+  HDRINST usr/include/linux/landlock.h
+  HDRINST usr/include/linux/qnxtypes.h
+  HDRINST usr/include/linux/v4l2-mediabus.h
+  HDRINST usr/include/linux/sed-opal.h
+  HDRINST usr/include/linux/aspeed-p2a-ctrl.h
+  HDRINST usr/include/linux/dvb/frontend.h
+  HDRINST usr/include/linux/dvb/net.h
+  HDRINST usr/include/linux/dvb/osd.h
+  HDRINST usr/include/linux/dvb/dmx.h
+  HDRINST usr/include/linux/dvb/video.h
+  HDRINST usr/include/linux/dvb/audio.h
+  HDRINST usr/include/linux/dvb/version.h
+  HDRINST usr/include/linux/dvb/ca.h
+  HDRINST usr/include/linux/pfkeyv2.h
+  HDRINST usr/include/linux/oom.h
+  HDRINST usr/include/linux/kvm.h
+  HDRINST usr/include/linux/mptcp.h
+  HDRINST usr/include/linux/nfs_mount.h
+  HDRINST usr/include/linux/pci.h
+  HDRINST usr/include/linux/bpf_common.h
+  HDRINST usr/include/linux/eventpoll.h
+  HDRINST usr/include/linux/binfmts.h
+  HDRINST usr/include/linux/kexec.h
+  HDRINST usr/include/linux/posix_types.h
+  HDRINST usr/include/linux/cciss_defs.h
+  HDRINST usr/include/linux/time.h
+  HDRINST usr/include/linux/trace_mmap.h
+  HDRINST usr/include/linux/vboxguest.h
+  HDRINST usr/include/linux/affs_hardblocks.h
+  HDRINST usr/include/linux/serial_core.h
+  HDRINST usr/include/linux/ublk_cmd.h
+  HDRINST usr/include/linux/unix_diag.h
+  HDRINST usr/include/linux/ipmi_msgdefs.h
+  HDRINST usr/include/linux/connector.h
+  HDRINST usr/include/linux/firewire-constants.h
+  HDRINST usr/include/linux/virtio_i2c.h
+  HDRINST usr/include/linux/i2c.h
+  HDRINST usr/include/linux/uuid.h
+  HDRINST usr/include/linux/magic.h
+  HDRINST usr/include/linux/netfilter_arp.h
+  HDRINST usr/include/linux/signal.h
+  HDRINST usr/include/linux/virtio_pcidev.h
+  HDRINST usr/include/linux/types.h
+  HDRINST usr/include/linux/netlink_diag.h
+  HDRINST usr/include/linux/vbox_vmmdev_types.h
+  HDRINST usr/include/linux/ipc.h
+  HDRINST usr/include/linux/genetlink.h
+  HDRINST usr/include/linux/fsmap.h
+  HDRINST usr/include/linux/ppp-ioctl.h
+  HDRINST usr/include/linux/dpll.h
+  HDRINST usr/include/linux/virtio_balloon.h
+  HDRINST usr/include/linux/virtio_gpio.h
+  HDRINST usr/include/linux/sonet.h
+  HDRINST usr/include/linux/if_tun.h
+  HDRINST usr/include/linux/const.h
+  HDRINST usr/include/linux/atmapi.h
+  HDRINST usr/include/linux/time_types.h
+  HDRINST usr/include/linux/map_to_14segment.h
+  HDRINST usr/include/linux/user_events.h
+  HDRINST usr/include/linux/if_bonding.h
+  HDRINST usr/include/linux/in6.h
+  HDRINST usr/include/linux/atmsap.h
+  HDRINST usr/include/linux/dlm_plock.h
+  HDRINST usr/include/linux/ioam6_genl.h
+  HDRINST usr/include/linux/idxd.h
+  HDRINST usr/include/linux/if_bridge.h
+  HDRINST usr/include/linux/timex.h
+  HDRINST usr/include/linux/gfs2_ondisk.h
+  HDRINST usr/include/linux/baycom.h
+  HDRINST usr/include/linux/vfio_ccw.h
+  HDRINST usr/include/linux/ethtool.h
+  HDRINST usr/include/linux/netrom.h
+  HDRINST usr/include/linux/map_to_7segment.h
+  HDRINST usr/include/linux/ppp_defs.h
+  HDRINST usr/include/linux/futex.h
+  HDRINST usr/include/linux/nfs4_mount.h
+  HDRINST usr/include/linux/kernel-page-flags.h
+  HDRINST usr/include/linux/if_pppol2tp.h
+  HDRINST usr/include/linux/major.h
+  HDRINST usr/include/linux/kdev_t.h
+  HDRINST usr/include/linux/virtio_pmem.h
+  HDRINST usr/include/linux/hid.h
+  HDRINST usr/include/linux/tdx-guest.h
+  HDRINST usr/include/linux/atm_tcp.h
+  HDRINST usr/include/linux/tls.h
+  HDRINST usr/include/linux/dcbnl.h
+  HDRINST usr/include/linux/mqueue.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_vlan.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_ip.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_mark_m.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_mark_t.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_among.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_nflog.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_802_3.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_ip6.h
+  HDRINST usr/include/linux/netfilter_bridge/ebtables.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_arpreply.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_redirect.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_pkttype.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_stp.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_arp.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_nat.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_limit.h
+  HDRINST usr/include/linux/netfilter_bridge/ebt_log.h
+  HDRINST usr/include/linux/wmi.h
+  HDRINST usr/include/linux/llc.h
+  HDRINST usr/include/linux/if_ltalk.h
+  HDRINST usr/include/linux/hiddev.h
+  HDRINST usr/include/linux/xattr.h
+  HDRINST usr/include/linux/i8k.h
+  HDRINST usr/include/linux/ip.h
+  HDRINST usr/include/linux/cifs/cifs_mount.h
+  HDRINST usr/include/linux/cifs/cifs_netlink.h
+  HDRINST usr/include/misc/pvpanic.h
+  HDRINST usr/include/misc/ocxl.h
+  HDRINST usr/include/misc/uacce/uacce.h
+  HDRINST usr/include/misc/uacce/hisi_qm.h
+  HDRINST usr/include/misc/mrvl_cn10k_dpi.h
+  HDRINST usr/include/misc/cxl.h
+  HDRINST usr/include/misc/fastrpc.h
+  HDRINST usr/include/misc/xilinx_sdfec.h
+  HDRINST usr/include/mtd/inftl-user.h
+  HDRINST usr/include/mtd/mtd-user.h
+  HDRINST usr/include/mtd/ubi-user.h
+  HDRINST usr/include/mtd/nftl-user.h
+  HDRINST usr/include/mtd/mtd-abi.h
+  HDRINST usr/include/rdma/mlx5_user_ioctl_verbs.h
+  HDRINST usr/include/rdma/mana-abi.h
+  HDRINST usr/include/rdma/ib_user_ioctl_verbs.h
+  HDRINST usr/include/rdma/qedr-abi.h
+  HDRINST usr/include/rdma/ocrdma-abi.h
+  HDRINST usr/include/rdma/cxgb4-abi.h
+  HDRINST usr/include/rdma/bnxt_re-abi.h
+  HDRINST usr/include/rdma/irdma-abi.h
+  HDRINST usr/include/rdma/rdma_user_ioctl.h
+  HDRINST usr/include/rdma/vmw_pvrdma-abi.h
+  HDRINST usr/include/rdma/mlx5-abi.h
+  HDRINST usr/include/rdma/rdma_user_rxe.h
+  HDRINST usr/include/rdma/ib_user_sa.h
+  HDRINST usr/include/rdma/rvt-abi.h
+  HDRINST usr/include/rdma/rdma_user_cm.h
+  HDRINST usr/include/rdma/rdma_netlink.h
+  HDRINST usr/include/rdma/ib_user_mad.h
+  HDRINST usr/include/rdma/efa-abi.h
+  HDRINST usr/include/rdma/hfi/hfi1_ioctl.h
+  HDRINST usr/include/rdma/hfi/hfi1_user.h
+  HDRINST usr/include/rdma/mthca-abi.h
+  HDRINST usr/include/rdma/erdma-abi.h
+  HDRINST usr/include/rdma/mlx5_user_ioctl_cmds.h
+  HDRINST usr/include/rdma/ib_user_ioctl_cmds.h
+  HDRINST usr/include/rdma/siw-abi.h
+  HDRINST usr/include/rdma/mlx4-abi.h
+  HDRINST usr/include/rdma/hns-abi.h
+  HDRINST usr/include/rdma/rdma_user_ioctl_cmds.h
+  HDRINST usr/include/rdma/ib_user_verbs.h
+  HDRINST usr/include/regulator/regulator.h
+  HDRINST usr/include/scsi/cxlflash_ioctl.h
+  HDRINST usr/include/scsi/scsi_bsg_ufs.h
+  HDRINST usr/include/scsi/scsi_netlink.h
+  HDRINST usr/include/scsi/scsi_netlink_fc.h
+  HDRINST usr/include/scsi/fc/fc_ns.h
+  HDRINST usr/include/scsi/fc/fc_els.h
+  HDRINST usr/include/scsi/fc/fc_fs.h
+  HDRINST usr/include/scsi/fc/fc_gs.h
+  HOSTCC  scripts/genksyms/parse.tab.o
+  HDRINST usr/include/scsi/scsi_bsg_fc.h
+  HDRINST usr/include/scsi/scsi_bsg_mpi3mr.h
+  HOSTCC  scripts/genksyms/lex.lex.o
+  HDRINST usr/include/sound/usb_stream.h
+  HDRINST usr/include/sound/firewire.h
+  HDRINST usr/include/sound/asound.h
+  HDRINST usr/include/sound/compress_offload.h
+  HDRINST usr/include/sound/emu10k1.h
+  HDRINST usr/include/sound/asound_fm.h
+  HDRINST usr/include/sound/snd_sst_tokens.h
+  HDRINST usr/include/sound/skl-tplg-interface.h
+  HDRINST usr/include/sound/hdspm.h
+  HDRINST usr/include/sound/sof/fw.h
+  HDRINST usr/include/sound/sof/header.h
+  HDRINST usr/include/sound/sof/tokens.h
+  HDRINST usr/include/sound/sof/abi.h
+  HDRINST usr/include/sound/tlv.h
+  HDRINST usr/include/sound/asoc.h
+  HDRINST usr/include/sound/snd_ar_tokens.h
+  HDRINST usr/include/sound/hdsp.h
+  HDRINST usr/include/sound/sb16_csp.h
+  HDRINST usr/include/sound/asequencer.h
+  HDRINST usr/include/sound/sfnt_info.h
+  HDRINST usr/include/sound/scarlett2.h
+  HDRINST usr/include/sound/compress_params.h
+  HDRINST usr/include/sound/intel/avs/tokens.h
+  HDRINST usr/include/video/sisfb.h
+  HDRINST usr/include/video/uvesafb.h
+  HDRINST usr/include/video/edid.h
+  HDRINST usr/include/xen/privcmd.h
+  HDRINST usr/include/xen/gntalloc.h
+  HDRINST usr/include/xen/evtchn.h
+  HDRINST usr/include/xen/gntdev.h
+  HDRINST usr/include/linux/version.h
+  HDRINST usr/include/asm/ist.h
+  HDRINST usr/include/asm/e820.h
+  HDRINST usr/include/asm/setup.h
+  HDRINST usr/include/asm/stat.h
+  HDRINST usr/include/asm/msgbuf.h
+  HDRINST usr/include/asm/vm86.h
+  HDRINST usr/include/asm/posix_types_64.h
+  HDRINST usr/include/asm/kvm_perf.h
+  HDRINST usr/include/asm/kvm_para.h
+  HDRINST usr/include/asm/mce.h
+  HDRINST usr/include/asm/ptrace.h
+  HDRINST usr/include/asm/svm.h
+  HDRINST usr/include/asm/ucontext.h
+  HDRINST usr/include/asm/siginfo.h
+  HDRINST usr/include/asm/a.out.h
+  HDRINST usr/include/asm/vmx.h
+  HDRINST usr/include/asm/boot.h
+  HDRINST usr/include/asm/hw_breakpoint.h
+  HDRINST usr/include/asm/bitsperlong.h
+  HDRINST usr/include/asm/byteorder.h
+  HDRINST usr/include/asm/auxvec.h
+  HDRINST usr/include/asm/sigcontext.h
+  HDRINST usr/include/asm/sigcontext32.h
+  HDRINST usr/include/asm/debugreg.h
+  HDRINST usr/include/asm/shmbuf.h
+  HDRINST usr/include/asm/swab.h
+  HDRINST usr/include/asm/statfs.h
+  HDRINST usr/include/asm/mman.h
+  HDRINST usr/include/asm/mtrr.h
+  HDRINST usr/include/asm/bootparam.h
+  HDRINST usr/include/asm/prctl.h
+  HDRINST usr/include/asm/vsyscall.h
+  HDRINST usr/include/asm/unistd.h
+  HDRINST usr/include/asm/msr.h
+  HDRINST usr/include/asm/posix_types_32.h
+  HDRINST usr/include/asm/hwcap2.h
+  HDRINST usr/include/asm/perf_regs.h
+  HDRINST usr/include/asm/processor-flags.h
+  HDRINST usr/include/asm/amd_hsmp.h
+  HDRINST usr/include/asm/kvm.h
+  HDRINST usr/include/asm/posix_types.h
+  HDRINST usr/include/asm/signal.h
+  HDRINST usr/include/asm/sembuf.h
+  HDRINST usr/include/asm/ptrace-abi.h
+  HDRINST usr/include/asm/ldt.h
+  HDRINST usr/include/asm/posix_types_x32.h
+  HDRINST usr/include/asm/sgx.h
+  HDRINST usr/include/asm/setup_data.h
+  HDRINST usr/include/asm/socket.h
+  HDRINST usr/include/asm/sockios.h
+  HDRINST usr/include/asm/ioctls.h
+  HDRINST usr/include/asm/poll.h
+  HDRINST usr/include/asm/unistd_x32.h
+  HDRINST usr/include/asm/ioctl.h
+  HDRINST usr/include/asm/termios.h
+  HDRINST usr/include/asm/termbits.h
+  HDRINST usr/include/asm/resource.h
+  HDRINST usr/include/asm/bpf_perf_event.h
+  HDRINST usr/include/asm/errno.h
+  HDRINST usr/include/asm/param.h
+  HDRINST usr/include/asm/unistd_32.h
+  HDRINST usr/include/asm/fcntl.h
+  HDRINST usr/include/asm/unistd_64.h
+  HDRINST usr/include/asm/ipcbuf.h
+  HDRINST usr/include/asm/types.h
+  LD      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/arch/x86/objtool-in.o
+  HOSTLD  scripts/genksyms/genksyms
+  HOSTCC  scripts/mod/mk_elfconfig
+  CC      scripts/mod/empty.o
+  CC      scripts/mod/devicetable-offsets.s
+  MKELF   scripts/mod/elfconfig.h
+  HOSTCC  scripts/mod/modpost.o
+  HOSTCC  scripts/mod/sumversion.o
+  HOSTCC  scripts/mod/symsearch.o
+  HOSTCC  scripts/mod/file2alias.o
+  HOSTLD  scripts/mod/modpost
+make[2]: *** No rule to make target 'kernel/time/timeconst.bc', needed by 'include/generated/timeconst.h'.
+  CC      kernel/bounds.s
+  CHKSHA1 include/linux/atomic/atomic-arch-fallback.h
+  CHKSHA1 include/linux/atomic/atomic-instrumented.h
+  CHKSHA1 include/linux/atomic/atomic-long.h
+  UPD     include/generated/bounds.h
+make[2]: Target 'prepare' not remade because of errors.
+make[1]: [/users/kshxtij/HonsProject/kernels/linux-v6.11/Makefile:1194: prepare0] Error 2 (ignored)
+  LD      /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/objtool-in.o
+  LINK    /users/kshxtij/HonsProject/kernels/linux-v6.11/tools/objtool/objtool
+  LDS     scripts/module.lds
+  HOSTCC  usr/gen_init_cpio
+  CC      init/main.o
+  CC      certs/system_keyring.o
+  UPD     init/utsversion-tmp.h
+  CC      init/do_mounts.o
+  CC      ipc/compat.o
+  AS      arch/x86/lib/clear_page_64.o
+  CC      io_uring/io_uring.o
+  CC      arch/x86/pci/i386.o
+  CC      init/do_mounts_rd.o
+  CC      arch/x86/power/cpu.o
+  CC      arch/x86/video/video-common.o
+  GEN     security/selinux/flask.h security/selinux/av_permissions.h
+  CC      arch/x86/platform/pvh/enlighten.o
+  CC      arch/x86/hyperv/hv_init.o
+  CC      arch/x86/xen/enlighten.o
+  CC      security/smack/smack_lsm.o
+  CC      security/tomoyo/audit.o
+  AR      samples/fanotify/built-in.a
+  CC      security/loadpin/loadpin.o
+  CC      arch/x86/kvm/../../../virt/kvm/kvm_main.o
+  CC      virt/lib/irqbypass.o
+  CC      security/apparmor/apparmorfs.o
+  CC      arch/x86/realmode/init.o
+  CC      security/selinux/avc.o
+  CC [U]  samples/fanotify/fs-monitor
+  CC      block/partitions/core.o
+  CC      security/yama/yama_lsm.o
+  CC      mm/kfence/core.o
+  CC      net/core/sock.o
+  CC      arch/x86/coco/tdx/tdx.o
+  ASN.1   security/keys/trusted-keys/tpm2key.asn1.[ch]
+  CC      lib/kunit/test.o
+  CC      arch/x86/events/amd/core.o
+  AR      drivers/cache/built-in.a
+  CC      security/keys/trusted-keys/trusted_core.o
+  CC      arch/x86/mm/pat/set_memory.o
+  CC      fs/notify/dnotify/dnotify.o
+  CC      arch/x86/kernel/fpu/init.o
+  CC      sound/core/oss/mixer_oss.o
+  HDRTEST usr/include/xen/privcmd.h
+  CC      drivers/irqchip/irqchip.o
+  HDRTEST usr/include/xen/gntalloc.h
+  HDRTEST usr/include/xen/evtchn.h
+  HDRTEST usr/include/xen/gntdev.h
+  HDRTEST usr/include/misc/pvpanic.h
+  CC      samples/kobject/kobject-example.o
+  HDRTEST usr/include/misc/ocxl.h
+  HDRTEST usr/include/misc/uacce/uacce.h
+  CC      arch/x86/entry/vdso/vma.o
+  HDRTEST usr/include/misc/uacce/hisi_qm.h
+  CC      kernel/sched/core.o
+  CC      crypto/async_tx/async_tx.o
+  HDRTEST usr/include/misc/mrvl_cn10k_dpi.h
+  CC      drivers/bus/fsl-mc/fsl-mc-bus.o
+  HDRTEST usr/include/misc/cxl.h
+  HDRTEST usr/include/misc/fastrpc.h
+In file included from <stdin>:2:
+In file included from ./arch/x86/include/asm/asm-prototypes.h:2:
+In file included from ./arch/x86/include/asm/ftrace.h:132:
+In file included from ./include/linux/compat.h:15:
+In file included from ./include/linux/socket.h:8:
+In file included from ./include/linux/uio.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/misc/xilinx_sdfec.h
+  HDRTEST usr/include/rdma/mlx5_user_ioctl_verbs.h
+  HDRTEST usr/include/rdma/mana-abi.h
+  HDRTEST usr/include/rdma/ib_user_ioctl_verbs.h
+In file included from ipc/compat.c:24:
+In file included from ./include/linux/compat.h:15:
+In file included from ./include/linux/socket.h:8:
+In file included from ./include/linux/uio.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/rdma/qedr-abi.h
+In file included from init/do_mounts.c:2:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from security/smack/smack_lsm.c:18:
+In file included from ./include/linux/xattr.h:15:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from certs/system_keyring.c:13:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/video/video-common.c:10:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/power/cpu.c:10:
+In file included from ./include/linux/suspend.h:5:
+In file included from ./include/linux/swap.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from In file included from init/main.c:17:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/kernel/fpu/init.c:6:
+In file included from ./arch/x86/include/asm/tlbflush.h:5:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/platform/pvh/enlighten.c:2:
+In file included from ./include/linux/acpi.h:13:
+In file included from ./include/linux/resource_ext.h:11:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h  HDRTEST usr/include/rdma/ocrdma-abi.h
+:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from security/loadpin/loadpin.c:12:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from arch/x86/pci/i386.c:31:
+In file included from ./include/linux/pci.h:35:
+In file included from ./include/linux/kobject.h:20:
+In file included from ./include/linux/sysfs.h:16:
+In file included from ./include/linux/kernfs.h:12:
+In file included from ./include/linux/idr.h:15:
+In file included from ./include/linux/radix-tree.h:21:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+In file included from #error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from security/selinux/avc.c:16:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6In file included from security/tomoyo/audit.c:8:
+In file included from security/tomoyo/common.h:17:
+In file included from ./include/linux/mm.h:7:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+:
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^In file included from lib/kunit/test.c:9:
+In file included from ./include/kunit/resource.h:12:
+In file included from ./include/kunit/test.h:24:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/realmode/init.c:3:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+In file included from #error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+virt/lib/irqbypass.c:19:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from sound/core/oss/mixer_oss.c:8:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/events/amd/core.c:2:
+In file included from ./include/linux/perf_event.h:18:
+In file included from ./include/uapi/linux/bpf_perf_event.h:11:
+In file included from ./arch/x86/include/generated/uapi/asm/bpf_perf_event.h:1:
+In file included from ./include/uapi/asm-generic/bpf_perf_event.h:4:
+In file included from ./include/linux/ptrace.h:7:
+In file included from ./include/linux/sched/signal.h:9:
+In file included from ./include/linux/sched/task.h:13:
+In file included from ./include/linux/uaccess.h:12:
+In file included from ./arch/x86/include/asm/uaccess.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from init/do_mounts_rd.c:3:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/kvm/../../../virt/kvm/kvm_main.c:15:
+In file included from ./include/linux/kvm_host.h:16:
+In file included from ./include/linux/mm.h:7:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13  HDRTEST usr/include/rdma/cxgb4-abi.h
+:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/xen/enlighten.c:4:
+In file included from ./include/linux/cpu.h:17:
+In file included from ./include/linux/node.h:18:
+In file included from ./include/linux/device.h:16:
+In file included from ./include/linux/energy_model.h:7:
+In file included from ./include/linux/kobject.h:20:
+In file included from ./include/linux/sysfs.h:16:
+In file included from ./include/linux/kernfs.h:12:
+In file included from ./include/linux/idr.h:15:
+In file included from ./include/linux/radix-tree.h:21:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/coco/tdx/tdx.c:10:
+In file included from ./include/linux/kexec.h:18:
+In file included from ./include/linux/vmcore_info.h:6:
+In file included from ./include/linux/elfcore.h:11:
+In file included from ./include/linux/ptrace.h:7:
+In file included from security/keys/trusted-keys/trusted_core.c:10:
+In file included from ./include/keys/trusted-type.h:12:
+In file included from ./include/linux/tpm.h:21:
+In file included from ./include/linux/acpi.h:13:
+In file included from ./include/linux/resource_ext.h:11:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+In file included from #error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+./include/linux/sched/signal.h:9:
+In file included from ./include/linux/sched/task.h:13:
+In file included from ./include/linux/uaccess.h:12:
+In file included from ./arch/x86/include/asm/uaccess.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from In file included from io_uring/io_uring.c:45:
+In file included from ./include/linux/syscalls.h:82:
+In file included from ./include/uapi/linux/aio_abi.h:31:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+arch/x86/hyperv/hv_init.c:12:
+In file included from ./include/linux/efi.h:19:
+In file included from ./include/linux/proc_fs.h:10:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from block/partitions/core.c:7:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from mm/kfence/core.c:12:
+In file included from ./include/linux/debugfs.h:15:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/rdma/bnxt_re-abi.h
+In file included from drivers/irqchip/irqchip.c:11:
+In file included from ./include/linux/acpi.h:13:
+In file included from ./include/linux/resource_ext.h:11:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+security/apparmor/apparmorfs.c:12:
+In file included from ./include/linux/security.h:29:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/mm/pat/set_memory.c:6:
+In file included from ./include/linux/highmem.h:5:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from net/core/sock.c:91:
+In file included from ./include/linux/errqueue.h:6:
+In file included from ./include/net/ip.h:22:
+In file included from ./include/linux/ip.h:16:
+In file included from ./include/linux/skbuff.h:17:
+In file included from ./include/linux/bvec.h:10:
+In file included from ./include/linux/highmem.h:5:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from fs/notify/dnotify/dnotify.c:10:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/rdma/irdma-abi.h
+1 error generated.
+  CC      arch/x86/lib/cmdline.o
+In file included from security/yama/yama_lsm.c:11:
+In file included from ./include/linux/lsm_hooks.h:29:
+In file included from ./include/linux/security.h:29:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/rdma/rdma_user_ioctl.h
+  HDRTEST usr/include/rdma/vmw_pvrdma-abi.h
+In file included from samples/kobject/kobject-example.c:8:
+In file included from ./include/linux/kobject.h:20:
+In file included from ./include/linux/sysfs.h:16:
+In file included from ./include/linux/kernfs.h:12:
+In file included from ./include/linux/idr.h:15:
+In file included from ./include/linux/radix-tree.h:21:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/rdma/mlx5-abi.h
+1 error generated.
+In file included from arch/x86/entry/vdso/vma.c:7:
+In file included from ./include/linux/mm.h:7:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/rdma/rdma_user_rxe.h
+make[5]: [scripts/Makefile.build:244: arch/x86/kernel/fpu/init.o] Error 1 (ignored)
+  CC      arch/x86/kernel/fpu/bugs.o
+  HDRTEST usr/include/rdma/ib_user_sa.h
+In file included from crypto/async_tx/async_tx.c:14:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from drivers/bus/fsl-mc/fsl-mc-bus.c:13:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+1 error generated.
+In file included from kernel/sched/core.c:10:
+In file included from ./include/linux/highmem.h:5:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/rdma/rvt-abi.h
+make[3]: [scripts/Makefile.build:244: certs/system_keyring.o] Error 1 (ignored)
+  HOSTCC  certs/extract-cert
+  HDRTEST usr/include/rdma/rdma_user_cm.h
+  HDRTEST usr/include/rdma/rdma_netlink.h
+  HDRTEST usr/include/rdma/ib_user_mad.h
+  AS      arch/x86/lib/cmpxchg16b_emu.o
+  HDRTEST usr/include/rdma/efa-abi.h
+  HDRTEST usr/include/rdma/hfi/hfi1_ioctl.h
+  CC      arch/x86/lib/copy_mc.o
+  HDRTEST usr/include/rdma/hfi/hfi1_user.h
+  COPY    certs/x509.genkey
+  CC      certs/blacklist.o
+  HDRTEST usr/include/rdma/mthca-abi.h
+  HDRTEST usr/include/rdma/erdma-abi.h
+  HDRTEST usr/include/rdma/mlx5_user_ioctl_cmds.h
+  HDRTEST usr/include/rdma/ib_user_ioctl_cmds.h
+  HDRTEST usr/include/rdma/siw-abi.h
+1 error generated.
+  CC      arch/x86/kernel/fpu/core.o
+make[4]: [scripts/Makefile.build:244: virt/lib/irqbypass.o] Error 1 (ignored)
+  HDRTEST usr/include/rdma/mlx4-abi.h
+  AR      virt/lib/built-in.a
+ar: virt/lib/irqbypass.o: No such file or directory
+make[4]: [scripts/Makefile.build:406: virt/lib/built-in.a] Error 123 (ignored)
+  AR      virt/built-in.a
+ar: virt/lib/built-in.a: No such file or directory
+make[3]: [scripts/Makefile.build:406: virt/built-in.a] Error 123 (ignored)
+  CC      drivers/bus/fsl-mc/mc-sys.o
+  HDRTEST usr/include/rdma/hns-abi.h
+1 error generated.
+1 error generated.
+make[4]: [scripts/Makefile.build:244: arch/x86/realmode/init.o] Error 1 (ignored)
+make[5]: [scripts/Makefile.build:244: sound/core/oss/mixer_oss.o] Error 1 (ignored)
+  HDRTEST usr/include/rdma/rdma_user_ioctl_cmds.h
+  CC      sound/core/oss/pcm_oss.o
+1 error generated.
+make[4]: [scripts/Makefile.build:244: lib/kunit/test.o] Error 1 (ignored)
+  CC      lib/kunit/resource.o
+  AS      arch/x86/realmode/rm/header.o
+  HDRTEST usr/include/rdma/ib_user_verbs.h
+1 error generated.
+1 error generated.
+make[4]: [scripts/Makefile.build:244: samples/kobject/kobject-example.o] Error 1 (ignored)
+make[4]: [scripts/Makefile.build:244: arch/x86/platform/pvh/enlighten.o] Error 1 (ignored)
+  CC      samples/kobject/kset-example.o
+  AS      arch/x86/platform/pvh/head.o
+  HDRTEST usr/include/sound/usb_stream.h
+1 error generated.
+make[3]: [scripts/Makefile.build:244: arch/x86/video/video-common.o] Error 1 (ignored)
+  AR      arch/x86/video/built-in.a
+ar: arch/x86/video/video-common.o: No such file or directory
+make[3]: [scripts/Makefile.build:406: arch/x86/video/built-in.a] Error 123 (ignored)
+  HDRTEST usr/include/sound/firewire.h
+1 error generated.
+  GEN     usr/initramfs_data.cpio
+make[3]: [scripts/Makefile.build:244: arch/x86/pci/i386.o] Error 1 (ignored)
+  AS      arch/x86/realmode/rm/trampoline_64.o
+  CC      arch/x86/pci/init.o
+  COPY    usr/initramfs_inc_data
+1 error generated.
+  CC      net/core/request_sock.o
+make[4]: [scripts/Makefile.build:244: drivers/irqchip/irqchip.o] Error 1 (ignored)
+  CC      drivers/irqchip/irq-al-fic.o
+  HDRTEST usr/include/sound/asound.h
+  AR      arch/x86/platform/pvh/built-in.a
+ar: arch/x86/platform/pvh/enlighten.o: No such file or directory
+make[4]: [scripts/Makefile.build:406: arch/x86/platform/pvh/built-in.a] Error 123 (ignored)
+  HDRTEST usr/include/sound/compress_offload.h
+  CC      arch/x86/mm/init.o
+1 error generated.
+make[5]: [scripts/Makefile.build:244: arch/x86/coco/tdx/tdx.o] Error 1 (ignored)
+  CC      arch/x86/coco/tdx/tdx-shared.o
+  HDRTEST usr/include/sound/emu10k1.h
+  AS      arch/x86/realmode/rm/stack.o
+  HDRTEST usr/include/sound/asound_fm.h
+1 error generated.
+1 error generated.
+make[5]: [scripts/Makefile.build:244: security/keys/trusted-keys/trusted_core.o] Error 1 (ignored)
+make[4]: [scripts/Makefile.build:244: block/partitions/core.o] Error 1 (ignored)
+  CC      block/partitions/acorn.o
+  CC      security/keys/trusted-keys/trusted_tpm1.o
+  HDRTEST usr/include/sound/snd_sst_tokens.h
+In file included from arch/x86/lib/copy_mc.c:5:
+In file included from ./include/linux/uaccess.h:12:
+In file included from ./arch/x86/include/asm/uaccess.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  AS      arch/x86/realmode/rm/reboot.o
+  HDRTEST usr/include/sound/skl-tplg-interface.h
+  HDRTEST usr/include/sound/hdspm.h
+1 error generated.
+1 error generated.
+1 error generated.
+make[4]: [scripts/Makefile.build:244: mm/kfence/core.o] Error 1 (ignored)
+make[3]: [scripts/Makefile.build:244: ipc/compat.o] Error 1 (ignored)
+make[5]: [scripts/Makefile.build:244: fs/notify/dnotify/dnotify.o] Error 1 (ignored)
+  CC      mm/kfence/report.o
+  AR      fs/notify/dnotify/built-in.a
+  CC      ipc/util.o
+ar: fs/notify/dnotify/dnotify.o: No such file or directory
+make[5]: [scripts/Makefile.build:406: fs/notify/dnotify/built-in.a] Error 123 (ignored)
+1 error generated.
+1 error generated.
+1 error generated.
+  HDRTEST usr/include/sound/sof/fw.h
+make[3]: [scripts/Makefile.build:244: init/do_mounts_rd.o] Error 1 (ignored)
+make[4]: [scripts/Makefile.build:244: crypto/async_tx/async_tx.o] Error 1 (ignored)
+  CC      arch/x86/mm/pat/memtype.o
+make[4]: [scripts/Makefile.build:244: security/loadpin/loadpin.o] Error 1 (ignored)
+  CC      crypto/async_tx/async_memcpy.o
+  AR      security/loadpin/built-in.a
+  CC      fs/notify/inotify/inotify_fsnotify.o
+  AS      arch/x86/realmode/rm/wakeup_asm.o
+ar: security/loadpin/loadpin.o: No such file or directory
+make[4]: [scripts/Makefile.build:406: security/loadpin/built-in.a] Error 123 (ignored)
+  CC      drivers/bus/fsl-mc/mc-io.o
+In file included from certs/blacklist.c:9:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+1 error generated.
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+make[5]: [scripts/Makefile.build:244: arch/x86/mm/pat/set_memory.o] Error 1 (ignored)
+  HDRTEST usr/include/sound/sof/header.h
+  CC      fs/notify/inotify/inotify_user.o
+1 error generated.
+make[4]: [scripts/Makefile.build:244: security/yama/yama_lsm.o] Error 1 (ignored)
+  AR      security/yama/built-in.a
+ar: security/yama/yama_lsm.o: No such file or directory
+make[4]: [scripts/Makefile.build:406: security/yama/built-in.a] Error 123 (ignored)
+  CC      arch/x86/kernel/fpu/regset.o
+  HDRTEST usr/include/sound/sof/tokens.h
+  CC      arch/x86/realmode/rm/wakemain.o
+  HDRTEST usr/include/sound/sof/abi.h
+1 error generated.
+make[3]: [scripts/Makefile.build:244: arch/x86/lib/copy_mc.o] Error 1 (ignored)
+  AS      arch/x86/lib/copy_mc_64.o
+  HDRTEST usr/include/sound/tlv.h
+In file included from arch/x86/kernel/fpu/core.c:10:
+In file included from ./arch/x86/include/asm/fpu/regset.h:8:
+In file included from ./include/linux/regset.h:16:
+In file included from ./include/linux/uaccess.h:12:
+In file included from ./arch/x86/include/asm/uaccess.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+1 error generated.
+1 error generated.
+  HDRTEST usr/include/sound/asoc.h
+make[5]: [scripts/Makefile.build:244: arch/x86/events/amd/core.o] Error 1 (ignored)
+make[5]: [scripts/Makefile.build:244: arch/x86/entry/vdso/vma.o] Error 1 (ignored)
+  CC      arch/x86/events/amd/lbr.o
+  CC      arch/x86/entry/vdso/extable.o
+In file included from drivers/bus/fsl-mc/mc-sys.c:10:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+1 error generated.
+make[4]: [scripts/Makefile.build:244: arch/x86/xen/enlighten.o] Error 1 (ignored)
+  HDRTEST usr/include/sound/snd_ar_tokens.h
+  CC      arch/x86/xen/mmu.o
+1 error generated.
+1 error generated.
+make[5]: [scripts/Makefile.build:244: drivers/bus/fsl-mc/fsl-mc-bus.o] Error 1 (ignored)
+make[3]: [scripts/Makefile.build:244: arch/x86/power/cpu.o] Error 1 (ignored)
+  AS      arch/x86/lib/copy_page_64.o
+  CC      arch/x86/power/hibernate_64.o
+  CC      arch/x86/kernel/fpu/signal.o
+  HDRTEST usr/include/sound/hdsp.h
+  CC      arch/x86/realmode/rm/video-mode.o
+In file included from sound/core/oss/pcm_oss.c:15:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/sound/sb16_csp.h
+  HDRTEST usr/include/sound/asequencer.h
+In file included from lib/kunit/resource.c:9:
+In file included from ./include/kunit/resource.h:12:
+In file included from ./include/kunit/test.h:24:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+1 error generated.
+make[4]: [scripts/Makefile.build:244: arch/x86/hyperv/hv_init.o] Error 1 (ignored)
+  CC      arch/x86/hyperv/mmu.o
+  HDRTEST usr/include/sound/sfnt_info.h
+In file included from samples/kobject/kset-example.c:8:
+In file included from ./include/linux/kobject.h:20:
+In file included from ./include/linux/sysfs.h:16:
+In file included from ./include/linux/kernfs.h:12:
+In file included from ./include/linux/idr.h:15:
+In file included from ./include/linux/radix-tree.h:21:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/sound/scarlett2.h
+  AS      arch/x86/realmode/rm/copy.o
+In file included from drivers/irqchip/irq-al-fic.c:7:
+In file included from ./include/linux/irq.h:19:
+In file included from ./include/linux/topology.h:33:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"In file included from 
+ ^
+arch/x86/pci/init.c:2:
+In file included from ./include/linux/pci.h:35:
+In file included from ./include/linux/kobject.h:20:
+In file included from ./include/linux/sysfs.h:16:
+In file included from ./include/linux/kernfs.h:12:
+In file included from ./include/linux/idr.h:15:
+In file included from ./include/linux/radix-tree.h:21:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/sound/compress_params.h
+In file included from net/core/request_sock.c:10:
+In file included from ./include/linux/module.h:17:
+In file included from ./include/linux/kmod.h:9:
+In file included from ./include/linux/umh.h:4:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/mm/init.c:1:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/sound/intel/avs/tokens.h
+  AS      arch/x86/realmode/rm/bioscall.o
+  HDRTEST usr/include/regulator/regulator.h
+In file included from arch/x86/coco/tdx/tdx-shared.c:2:
+In file included from ./arch/x86/include/asm/pgtable.h:928:
+In file included from ./arch/x86/include/asm/pgtable_64.h:17:
+In file included from ./arch/x86/include/asm/fixmap.h:191:
+In file included from ./include/asm-generic/fixmap.h:19:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/asm-generic/int-ll64.h
+In file included from security/keys/trusted-keys/trusted_tpm1.c:11:
+In file included from ./include/linux/slab.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  CC      arch/x86/realmode/rm/regs.o
+  HDRTEST usr/include/asm-generic/int-l64.h
+In file included from block/partitions/acorn.c:10:
+In file included from ./include/linux/buffer_head.h:12:
+In file included from ./include/linux/blk_types.h:10:
+In file included from ./include/linux/bvec.h:10:
+In file included from ./include/linux/highmem.h:5:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/asm-generic/setup.h
+1 error generated.
+make[4]: [scripts/Makefile.build:244: security/tomoyo/audit.o] Error 1 (ignored)
+  CC      security/tomoyo/common.o
+1 error generated.
+In file included from ipc/util.c:47:
+In file included from ./include/linux/mm.h:7:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+make[5]: [scripts/Makefile.build:244: arch/x86/coco/tdx/tdx-shared.o] Error 1 (ignored)
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  AS      arch/x86/coco/tdx/tdcall.o
+  HDRTEST usr/include/asm-generic/hugetlb_encode.h
+In file included from <stdin>:2:
+In file included from ./arch/x86/include/asm/asm-prototypes.h:2:
+In file included from ./arch/x86/include/asm/ftrace.h:132:
+In file included from ./include/linux/compat.h:15:
+In file included from ./include/linux/socket.h:8:
+In file included from ./include/linux/uio.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+1 error generated.
+  CC      arch/x86/realmode/rm/video-vga.o
+  HDRTEST usr/include/asm-generic/socket.h
+make[3]: [scripts/Makefile.build:244: init/main.o] Error 1 (ignored)
+In file included from mm/kfence/report.c:15:
+In file included from ./include/linux/seq_file.h:11:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from fs/notify/inotify/inotify_fsnotify.c:17:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+In file included from #error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"drivers/bus/fsl-mc/mc-io.c:8:
+In file included from ./include/linux/fsl/mc.h:13:
+In file included from ./include/linux/device.h:16:
+In file included from ./include/linux/energy_model.h:7:
+In file included from ./include/linux/kobject.h:20:
+In file included from ./include/linux/sysfs.h:16:
+In file included from ./include/linux/kernfs.h:12:
+In file included from ./include/linux/idr.h:15:
+In file included from ./include/linux/radix-tree.h:21:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+
+ ^
+In file included from arch/x86/kernel/fpu/regset.c:9:
+In file included from ./arch/x86/include/asm/fpu/signal.h:8:
+In file included from ./include/linux/compat.h:15:
+In file included from ./include/linux/socket.h:8:
+In file included from ./include/linux/uio.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/mm/pat/memtype.c:34:
+In file included from ./include/linux/seq_file.h:11:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  HDRTEST usr/include/asm-generic/errno-base.h
+In file included from crypto/async_tx/async_memcpy.c:14:
+In file included from ./include/linux/highmem.h:5:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  AR      arch/x86/coco/tdx/built-in.a
+  CC      sound/core/seq/oss/seq_oss.o
+ar: arch/x86/coco/tdx/tdx.o: No such file or directory
+make[5]: [scripts/Makefile.build:406: arch/x86/coco/tdx/built-in.a] Error 123 (ignored)
+1 error generated.
+In file included from fs/notify/inotify/inotify_user.c:17:
+In file included from ./include/linux/fs.h:13:
+In file included from ./include/linux/list_lru.h:14:
+In file included from ./include/linux/xarray.h:16:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+make[3]: [scripts/Makefile.build:244: init/do_mounts.o] Error 1 (ignored)
+  HDRTEST usr/include/asm-generic/stat.h
+  CC      init/do_mounts_initrd.o
+  CC      arch/x86/coco/sev/core.o
+  HDRTEST usr/include/asm-generic/msgbuf.h
+1 error generated.
+make[4]: [scripts/Makefile.build:244: security/smack/smack_lsm.o] Error 1 (ignored)
+  CC      arch/x86/realmode/rm/video-vesa.o
+1 error generated.
+In file included from arch/x86/events/amd/lbr.c:2:
+In file included from ./include/linux/perf_event.h:18:
+In file included from ./include/uapi/linux/bpf_perf_event.h:11:
+In file included from ./arch/x86/include/generated/uapi/asm/bpf_perf_event.h:1:
+In file included from ./include/uapi/asm-generic/bpf_perf_event.h:4:
+In file included from ./include/linux/ptrace.h:7:
+In file included from ./include/linux/sched/signal.h:9:
+In file included from ./include/linux/sched/task.h:13:
+In file included from ./include/linux/uaccess.h:12:
+In file included from ./arch/x86/include/asm/uaccess.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/entry/vdso/extable.c:3:
+In file included from ./include/linux/mm.h:7:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+make[4]: [scripts/Makefile.build:244: security/apparmor/apparmorfs.o] Error 1 (ignored)
+  CC      security/smack/smack_access.o
+1 error generated.
+  CC      security/apparmor/audit.o
+make[4]: [scripts/Makefile.build:244: security/selinux/avc.o] Error 1 (ignored)
+  HDRTEST usr/include/asm-generic/sockios.h
+  CC      security/selinux/hooks.o
+In file included from arch/x86/kernel/fpu/signal.c:6:
+In file included from ./include/linux/compat.h:15:
+In file included from ./include/linux/socket.h:8:
+In file included from ./include/linux/uio.h:10:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+In file included from arch/x86/xen/mmu.c:4:
+In file included from ./arch/x86/include/asm/xen/page.h:9:
+In file included from ./include/linux/mm.h:7:
+In file included from 1 error generated.
+./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+make[3]: [scripts/Makefile.build:244: certs/blacklist.o] Error 1 (ignored)
+In file included from arch/x86/power/hibernate_64.c:10:
+In file included from ./include/linux/gfp.h:7:
+In file included from ./include/linux/mmzone.h:22:
+In file included from ./include/linux/mm_types.h:16:
+In file included from ./include/linux/uprobes.h:49:
+In file included from ./arch/x86/include/asm/uprobes.h:13:
+In file included from ./include/linux/notifier.h:16:
+In file included from ./include/linux/srcu.h:21:
+In file included from ./include/linux/workqueue.h:9:
+In file included from ./include/linux/timer.h:6:
+In file included from ./include/linux/ktime.h:25:
+In file included from ./include/linux/jiffies.h:14:
+./include/generated/timeconst.h:11  HDRTEST usr/include/asm-generic/ioctls.h
+:2: error: "include/generated/timeconst.h has the wrong HZ value!"
+#error "include/generated/timeconst.h has the wrong HZ value!"
+ ^
+  GEN     certs/blacklist_hash_list
+  CERT    certs/x509_revocation_list
+  CERT    certs/x509_certificate_list
+  GENKEY  certs/signing_key.pem
+  HDRTEST usr/include/asm-generic/kvm_para.h
