@@ -8,7 +8,7 @@ void saveModule(Module &M, Twine filename)
 	int bc_fd;
 	StringRef FN = filename.getSingleStringRef();
 	sys::fs::openFileForWrite(
-			FN.take_front(FN.size() - 2) + ".bc", bc_fd);
+			FN.take_front(FN.size() - 2) + ".llbc", bc_fd);
 	raw_fd_ostream bc_file(bc_fd, true, true);
 	WriteBitcodeToFile(M, bc_file);
 }
