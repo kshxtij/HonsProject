@@ -4,7 +4,7 @@ set -e -x
 ROOT=$(pwd)
 
 sudo apt update
-sudo apt install -y flex bison clang libelf-dev libssl-dev lld python3-pip cmake
+sudo apt install -y flex bison clang libelf-dev libssl-dev lld python3-pip cmake zip
 
 # Check argument 1
 if [ -z "$1" ]; then
@@ -17,13 +17,19 @@ if ! echo "$1" | grep -qP 'v\d+\.\d+'; then
   echo "Invalid kernel version: $1"
   exit 1
 fi
+KERNEL_VERSION=$1
+echo "Valid kernel version detected: $KERNEL_VERSION"
 
-echo "Valid kernel version detected: $1"
 
-echo "Cloning latest commit on branch $1"
-
-git clone --depth 1 --branch $1 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git kernels/linux-$1
-KERNEL_LOCATION=kernels/linux-$1
+echo "Cloning latest commit on branch $KERNEL_VERSION"
+if [ -d "kernels/linux-$KERNEL_VERSION" ]; then
+  echo "Kernel directory already exists"
+  echo "Skipping cloning"
+else
+  echo "Cloning kernel"
+  git clone --depth 1 --branch $KERNEL_VERSION https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git kernels/linux-$KERNEL_VERSION
+fi
+KERNEL_LOCATION=kernels/linux-$KERNEL_VERSION
 
 # Check if llvm-project directory exists
 if [ ! -d "$ROOT/llvm-project" ]; then
@@ -35,77 +41,80 @@ if [ ! -d "$ROOT/llvm-project" ]; then
 fi
 LLVM_LOCATION=llvm-project
 
-echo "Building LLVM"
-cd $LLVM_LOCATION
+# if llvm-project/prefix/bin/clang does not exist, build LLVM
+if [ ! -f "$ROOT/llvm-project/prefix/bin/clang" ]; then
+  echo "Building LLVM"
+  cd $LLVM_LOCATION
 
-mkdir -p build
-cd build
+  mkdir -p build
+  cd build
 
-cmake -DLLVM_TARGET_ARCH="X86" -DLLVM_TARGETS_TO_BUILD="ARM;X86;AArch64" -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=WebAssembly -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;lldb" -G "Unix Makefiles" ../llvm
+  cmake -DLLVM_TARGET_ARCH="X86" -DLLVM_TARGETS_TO_BUILD="ARM;X86;AArch64" -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=WebAssembly -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;lldb" -G "Unix Makefiles" ../llvm
 
-make -j$(nproc)
+  make -j$(nproc)
 
-if [ ! -d "$ROOT/llvm-project/prefix" ]; then
-  mkdir $ROOT/llvm-project/prefix
+  if [ ! -d "$ROOT/llvm-project/prefix" ]; then
+    mkdir $ROOT/llvm-project/prefix
+  fi
+
+  cmake -DCMAKE_INSTALL_PREFIX=$ROOT/llvm-project/prefix -P cmake_install.cmake
+
+  echo "LLVM built and installed"
 fi
-
-cmake -DCMAKE_INSTALL_PREFIX=$ROOT/llvm-project/prefix -P cmake_install.cmake
-
-echo "LLVM built and installed"
-
-echo "Building Bitcode Dumping Tool"
-cd $ROOT/IRDumper
-#make clean
-#make
-
-DUMPER_LOCATION=$ROOT/IRDumper/build
-IRDUMPER=$DUMPER_LOCATION/lib/libDumper.so
-cd $ROOT
-
 CLANG_BIN=$ROOT/llvm-project/prefix/bin/clang
 
-# Check argument 2
-if [ -z "$2" ]; then
-  echo "Usage: $0 <kernel_version> <config_name>"
-  exit 1
+if [ ! -f "$ROOT/IRDumper/build/lib/libDumper.so" ]; then
+  echo "Building Bitcode Dumping Tool"
+  cd $ROOT/IRDumper
+  make clean
+  make
 fi
+DUMPER_LOCATION=$ROOT/IRDumper/build
+IRDUMPER=$DUMPER_LOCATION/lib/libDumper.so
 
-# Check if argument is either defconfig or allyesconfig
-if [ "$2" != "defconfig" ] && [ "$2" != "allyesconfig" ]; then
-  echo "Invalid config name: $2"
-  exit 1
-fi
-CONFIG_NAME=$2
+build () {
+  cd $ROOT
 
-echo "Valid config name detected: $2"
+  CONFIG_NAME=$1
+  NEW_CMD="\n\n\
+  KBUILD_USERCFLAGS += -Wno-everything -Wno-address-of-packed-member -g -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang $IRDUMPER\nKBUILD_CFLAGS += -Wno-everything -g -Wno-address-of-packed-member -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang $IRDUMPER"
 
-NEW_CMD="\n\n\
-KBUILD_USERCFLAGS += -Wno-everything -Wno-address-of-packed-member -g -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang $IRDUMPER\nKBUILD_CFLAGS += -Wno-everything -g -Wno-address-of-packed-member -Xclang -no-opaque-pointers -Xclang -flegacy-pass-manager -Xclang -load -Xclang $IRDUMPER"
+  if [ ! -f "$KERNEL_LOCATION/Makefile.bak" ]; then
+    cp $KERNEL_LOCATION/Makefile $KERNEL_LOCATION/Makefile.bak
+    echo "Backed up Makefile"
+  fi
 
-if [ ! -f "$KERNEL_LOCATION/Makefile.bak" ]; then
-	cp $KERNEL_LOCATION/Makefile $KERNEL_LOCATION/Makefile.bak
-	echo "Backed up Makefile"
-fi
+  echo -e $NEW_CMD >$KERNEL_LOCATION/IRDumper.cmd
+  cat $KERNEL_LOCATION/Makefile.bak $KERNEL_LOCATION/IRDumper.cmd >$KERNEL_LOCATION/Makefile
 
-echo -e $NEW_CMD >$KERNEL_LOCATION/IRDumper.cmd
-cat $KERNEL_LOCATION/Makefile.bak $KERNEL_LOCATION/IRDumper.cmd >$KERNEL_LOCATION/Makefile
+  cd $KERNEL_LOCATION
 
-cd $KERNEL_LOCATION
+  echo "Clearing old build"
+  make clean
+  find . -name '*.bc' -delete
 
-echo "Clearing old build"
-make clean
+  make $CONFIG_NAME
+  echo "1" | make CC=$CLANG_BIN CFLAGS_KERNEL="-Wno-everything" -j$(nproc) -k -i
 
-make $CONFIG_NAME
-echo "1" | make CC=$CLANG_BIN CFLAGS_KERNEL="-Wno-everything" -j$(nproc) -k -i
+  echo "Kernel built with IR Dumper"
 
-echo "Kernel built with IR Dumper"
+  echo "Restoring Makefile"
+  cp Makefile.bak Makefile
+  rm Makefile.bak
 
-cd $ROOT
+  echo $(find . -name "*.bc" | wc -l) "LLVM bitcode files generated"
 
-echo "Restoring Makefile"
-cp $KERNEL_LOCATION/Makefile.bak $KERNEL_LOCATION/Makefile
-rm $KERNEL_LOCATION/Makefile.bak
+  mkdir $ROOT/bitcode/$KERNEL_VERSION-$CONFIG_NAME
+  find . -name '*.bc' | cpio -pdVmu $ROOT/bitcode/$KERNEL_VERSION-$CONFIG_NAME/
+  echo "Bitcode files copied to $ROOT/bitcode/$KERNEL_VERSION-$CONFIG_NAME"
+  return 0
+}
 
-echo $(find $KERNEL_LOCATION -name "*.bc" | wc -l) "LLVM bitcode files generated"
+build "allyesconfig"
+echo "Done building allyesconfig"
+
+build "defconfig"
+echo "Done building defconfig"
 
 echo "Done"
+exit 0
