@@ -1,0 +1,1 @@
+/usr/bin/clang++ -fPIC -std=c++14 -fpic -fopenmp -fno-rtti -g -O3 -shared -Wl,-soname,libAnalyzer.so -o libAnalyzer.so CMakeFiles/AnalyzerObj.dir/main.cpp.o 

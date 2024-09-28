@@ -1,0 +1,11 @@
+/users/kshxtij/HonsProject/SysCallDetector/build/CMakeFiles/intrinsics_gen.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/CMakeFiles/omp_gen.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/CMakeFiles/acc_gen.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/CMakeFiles/edit_cache.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/CMakeFiles/rebuild_cache.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/lib/CMakeFiles/AnalyzerObj.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/lib/CMakeFiles/Analyzer.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/lib/CMakeFiles/AnalyzerStatic.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/lib/CMakeFiles/kanalyzer.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/lib/CMakeFiles/edit_cache.dir
+/users/kshxtij/HonsProject/SysCallDetector/build/lib/CMakeFiles/rebuild_cache.dir
