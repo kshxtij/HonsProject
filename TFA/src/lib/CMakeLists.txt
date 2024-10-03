@@ -47,5 +47,4 @@ target_link_libraries(analyzer
   LLVMAnalysis
   LLVMIRReader
   AnalyzerStatic
-  OpenMP
   )

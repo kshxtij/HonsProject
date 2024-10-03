@@ -2,3 +2,5 @@ kernels/linux-**
 llvm-project
 bitcode
 install.log
+SysCallDetector/build
+TFA/build

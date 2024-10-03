@@ -20,6 +20,4 @@ include(CheckCXXCompilerFlag)
 include_directories(${LLVM_INCLUDE_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 
-set(OPEN)
-
 add_subdirectory (lib)
