@@ -19,16 +19,17 @@ include(CheckCXXCompilerFlag)
 #	message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++14 support. Please use a different C++ compiler.")
 #endif()
 
-set(OMP_INCLUDE_DRIS "/usr/lib/llvm-14/include/openmp")
-set(OMP_LIB_DRIS "/usr/lib/llvm-14/lib")
+# set(OMP_INCLUDE_DRIS "/usr/lib/llvm-14/include/openmp")
+# set(OMP_LIB_DRIS "/usr/lib/llvm-14/lib")
 
 include_directories(${LLVM_INCLUDE_DIRS})
 # include_directories(${MYSQL_INCLUDE_DIRS})
 
-include_directories(${OMP_INCLUDE_DRIS})
-link_directories(${OMP_LIB_DRIS})
-link_libraries(${OMP_LIB_DRIS})
+# include_directories(${OMP_INCLUDE_DRIS})
+# link_directories(${OMP_LIB_DRIS})
+# link_libraries(${OMP_LIB_DRIS})
 
+find_package(OpenMP REQUIRED)
 message("OPENMP: ${OMP_INCLUDE_DRIS}")
 
 add_definitions(${LLVM_DEFINITIONS})
