@@ -106,5 +106,9 @@ mkdir $ROOT/bitcode/$KERNEL_VERSION-$CONFIG_NAME
 find . -name '*.llbc' | cpio -pdVmu $ROOT/bitcode/$KERNEL_VERSION-$CONFIG_NAME/
 echo "Bitcode files copied to $ROOT/bitcode/$KERNEL_VERSION-$CONFIG_NAME"
 
+# generate a list of all the bitcode files and write it to a file
+cd $ROOT/bitcode/$KERNEL_VERSION-$CONFIG_NAME
+find ~+ -name '*.llbc' > $CONFIG_NAME-files.txt
+
 echo "Installation complete"
 exit 0
