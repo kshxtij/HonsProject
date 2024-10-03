@@ -15,7 +15,7 @@ build_src_func = \
 			CC=clang CXX=clang++ \
 			cmake ${1} \
 				-DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_CXX_FLAGS_RELEASE="-std=c++14 -fno-rtti -fpic -fopenmp -O3" \
+        -DCMAKE_CXX_FLAGS_RELEASE="-std=c++14 -fno-rtti -fpic -fopenmp=libomp -O3" \
 		&& make -j${NPROC})
 
 all: analyzer
