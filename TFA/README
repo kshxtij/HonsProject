@@ -1,0 +1,30 @@
+# Improving Indirect-Call Analysis in LLVM with Type and Data-Flow Co-Analysis
+
+## How to use TFA
+
+### Build LLVM 
+* Download the source of llvm-project (https://github.com/llvm/llvm-project)
+* Checkout suitable llvm versions (this project is compiled and tested with llvm-15-init)
+* Compile the llvm-project and add the project build path to the Makefile
+
+### Build the TFA analyzer 
+```sh 
+	# Build the analysis pass of TFA 
+	$ cd analyzer 
+	$ make 
+	# Now, you can find the executable, `analyzer`, in `build/lib/`
+```
+ 
+### Prepare LLVM bitcode files of target programs
+* For better indirect call analysis, please compile the target programs with options: -O0, -g
+* Currently the LLVM bitcode could be dumped through LLVM API: WriteBitcodeToFile()
+* Register the LLVM module pass with the dump API into LLVM pass manager and compile the target programs with Clang
+* O0-optimized bitcode could be obtained through registering the IR generation pass at the start optimation pipline (registerPipelineStartEPCallback)
+
+### Run the TFA analyzer
+```sh
+	# To analyze a single bitcode file, say "test.bc", run:
+	$ ./build/lib/analyzer -krc test.bc
+	# To analyze a list of bitcode files, put the absolute paths of the bitcode files in a file, say "bc.list", then run:
+	$ ./build/lib/analyzer -krc @bc.list
+```
